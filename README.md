@@ -1,2 +1,3 @@
-# laravel-vue-eduwork
-Repo untuk siswa Eduwork
+# Laravel Vue Eduwork
+
+Repo kusus pengumpulan tugas student Eduwork ✅ (https://eduwork.id/)
