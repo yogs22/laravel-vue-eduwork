@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Jul 2022 pada 18.32
+-- Waktu pembuatan: 13 Jul 2022 pada 18.36
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 7.4.25
 
@@ -20,6 +20,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `apotek`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `jenis`
+--
+
+CREATE TABLE `jenis` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `jenis`
+--
+
+INSERT INTO `jenis` (`id`, `nama`) VALUES
+(1, 'Luka Luar'),
+(2, 'Luka Dalam');
 
 -- --------------------------------------------------------
 
@@ -47,6 +66,12 @@ INSERT INTO `obat` (`id`, `nama`, `id_jenis`) VALUES
 --
 
 --
+-- Indeks untuk tabel `jenis`
+--
+ALTER TABLE `jenis`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `obat`
 --
 ALTER TABLE `obat`
@@ -56,6 +81,12 @@ ALTER TABLE `obat`
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
+
+--
+-- AUTO_INCREMENT untuk tabel `jenis`
+--
+ALTER TABLE `jenis`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `obat`
