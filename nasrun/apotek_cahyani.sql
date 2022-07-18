@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Jul 2022 pada 11.11
+-- Waktu pembuatan: 18 Jul 2022 pada 12.33
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.11
 
@@ -24,75 +24,250 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_detailkaryawan`
+-- Struktur dari tabel `detail_karyawan`
 --
 
-CREATE TABLE `tb_detailkaryawan` (
-  `id_karyawan` varchar(10) NOT NULL,
-  `tempat_lahir` varchar(30) NOT NULL,
+CREATE TABLE `detail_karyawan` (
+  `id` int(11) NOT NULL,
+  `tempat_lahir` varchar(32) NOT NULL,
   `tanggal_lahir` date NOT NULL,
-  `domisili` text NOT NULL,
-  `agama` varchar(10) NOT NULL,
-  `pendidikan_terakhir` varchar(100) NOT NULL,
-  `email` varchar(100) DEFAULT NULL,
+  `agama` varchar(20) NOT NULL,
+  `alamat` text NOT NULL,
+  `pendidikan` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `no_tlpn` char(13) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `tb_detailkaryawan`
---
-
-INSERT INTO `tb_detailkaryawan` (`id_karyawan`, `tempat_lahir`, `tanggal_lahir`, `domisili`, `agama`, `pendidikan_terakhir`, `email`, `no_tlpn`) VALUES
-('022101', 'Randangan', '1997-06-05', 'Jl. Trans Sulawesi Desa Buntulia', 'Islam', 'SMK Kesehatan', 'nasrunhabu567@gmail.com', '081288639586'),
-('022102', 'Manado', '1997-06-09', 'Jl. Trans Sulawesi, Desa Marisa', 'kristen', 'SMK Teknik', NULL, '081384507337');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_karyawan`
+-- Struktur dari tabel `faktur`
 --
 
-CREATE TABLE `tb_karyawan` (
-  `detail_karyawan` varchar(10) NOT NULL,
-  `id` varchar(10) NOT NULL,
-  `nama` varchar(32) NOT NULL,
-  `jabatan` varchar(32) NOT NULL
+CREATE TABLE `faktur` (
+  `id_faktur` int(10) NOT NULL,
+  `no_faktur` varchar(10) NOT NULL,
+  `perusahaan` varchar(50) NOT NULL,
+  `pengirim` varchar(32) NOT NULL,
+  `kode_barang` varchar(10) NOT NULL,
+  `nama_barang` varchar(50) NOT NULL,
+  `kode_satuan` varchar(10) NOT NULL,
+  `tanggal pengiriman` date NOT NULL,
+  `tanggal terima` date NOT NULL,
+  `penerima` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data untuk tabel `tb_karyawan`
+-- Struktur dari tabel `karyawan`
 --
 
-INSERT INTO `tb_karyawan` (`detail_karyawan`, `id`, `nama`, `jabatan`) VALUES
-('022101', '22101', 'Nasrun Habu', 'Crew Stroe'),
-('022102', '22102', 'Muhammad Taufik Pratama', 'Assisten Manager');
+CREATE TABLE `karyawan` (
+  `id_karyawan` varchar(10) NOT NULL,
+  `nama_karyawan` varchar(32) NOT NULL,
+  `jabatan` varchar(20) NOT NULL,
+  `detail_karyawan` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `pelanggan`
+--
+
+CREATE TABLE `pelanggan` (
+  `id` int(11) NOT NULL,
+  `nama_pelanggan` varchar(32) NOT NULL,
+  `tanggal_lahir` date NOT NULL,
+  `agama` varchar(20) NOT NULL,
+  `alamat` text NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `no_tlpn` char(13) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `stok_obat`
+--
+
+CREATE TABLE `stok_obat` (
+  `id` int(11) NOT NULL,
+  `kode_barang` varchar(10) NOT NULL,
+  `nama_barang` varchar(50) NOT NULL,
+  `kode_satuan` varchar(10) NOT NULL,
+  `status` varchar(20) NOT NULL,
+  `harga_beli` decimal(10,0) NOT NULL,
+  `active` varchar(10) NOT NULL,
+  `expired` date NOT NULL,
+  `no_faktur` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `suplier`
+--
+
+CREATE TABLE `suplier` (
+  `id` int(11) NOT NULL,
+  `nama_perusahaan` varchar(50) NOT NULL,
+  `alamat` text NOT NULL,
+  `penanggung_jawab` varchar(32) NOT NULL,
+  `jabatan` varchar(32) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `no_tlpn` char(13) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `transaksi`
+--
+
+CREATE TABLE `transaksi` (
+  `id` int(11) NOT NULL,
+  `nama_karyawan` varchar(32) NOT NULL,
+  `id_pelanggan` int(11) NOT NULL,
+  `nama_pelanggan` varchar(32) NOT NULL,
+  `nama_barang` varchar(50) NOT NULL,
+  `status_barang` varchar(20) NOT NULL,
+  `active` varchar(20) NOT NULL,
+  `harga` decimal(10,0) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `tb_detailkaryawan`
+-- Indeks untuk tabel `detail_karyawan`
 --
-ALTER TABLE `tb_detailkaryawan`
-  ADD PRIMARY KEY (`id_karyawan`);
+ALTER TABLE `detail_karyawan`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `tb_karyawan`
+-- Indeks untuk tabel `faktur`
 --
-ALTER TABLE `tb_karyawan`
+ALTER TABLE `faktur`
+  ADD PRIMARY KEY (`id_faktur`),
+  ADD UNIQUE KEY `kode_barang` (`kode_barang`),
+  ADD UNIQUE KEY `kode_satuan` (`kode_satuan`),
+  ADD UNIQUE KEY `nama_barang` (`nama_barang`),
+  ADD UNIQUE KEY `no_faktur` (`no_faktur`),
+  ADD KEY `fk_nama_perusahaan` (`perusahaan`);
+
+--
+-- Indeks untuk tabel `karyawan`
+--
+ALTER TABLE `karyawan`
+  ADD PRIMARY KEY (`id_karyawan`),
+  ADD KEY `fk_detailkaryawan` (`detail_karyawan`),
+  ADD KEY `nama_karyawan` (`nama_karyawan`);
+
+--
+-- Indeks untuk tabel `pelanggan`
+--
+ALTER TABLE `pelanggan`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_tb_detailkaryawan` (`detail_karyawan`);
+  ADD KEY `nama_pelanggan` (`nama_pelanggan`);
+
+--
+-- Indeks untuk tabel `stok_obat`
+--
+ALTER TABLE `stok_obat`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `status` (`status`),
+  ADD UNIQUE KEY `active` (`active`),
+  ADD KEY `fk_kode_brng` (`kode_barang`),
+  ADD KEY `fk_kode_satuan` (`kode_satuan`),
+  ADD KEY `fk_nama_brng` (`nama_barang`),
+  ADD KEY `fk_no_faktur` (`no_faktur`);
+
+--
+-- Indeks untuk tabel `suplier`
+--
+ALTER TABLE `suplier`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `nama_perusahaan` (`nama_perusahaan`);
+
+--
+-- Indeks untuk tabel `transaksi`
+--
+ALTER TABLE `transaksi`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_namakaryawan` (`nama_karyawan`),
+  ADD KEY `fk_idpelanggan` (`id_pelanggan`),
+  ADD KEY `fk_nama_pelanggan` (`nama_pelanggan`),
+  ADD KEY `fk_nm_barang` (`nama_barang`),
+  ADD KEY `fk_status` (`status_barang`),
+  ADD KEY `fk_active` (`active`);
+
+--
+-- AUTO_INCREMENT untuk tabel yang dibuang
+--
+
+--
+-- AUTO_INCREMENT untuk tabel `detail_karyawan`
+--
+ALTER TABLE `detail_karyawan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `pelanggan`
+--
+ALTER TABLE `pelanggan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `suplier`
+--
+ALTER TABLE `suplier`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `transaksi`
+--
+ALTER TABLE `transaksi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Ketidakleluasaan untuk tabel `tb_karyawan`
+-- Ketidakleluasaan untuk tabel `faktur`
 --
-ALTER TABLE `tb_karyawan`
-  ADD CONSTRAINT `fk_tb_detailkaryawan` FOREIGN KEY (`detail_karyawan`) REFERENCES `tb_detailkaryawan` (`id_karyawan`);
+ALTER TABLE `faktur`
+  ADD CONSTRAINT `fk_nama_perusahaan` FOREIGN KEY (`perusahaan`) REFERENCES `suplier` (`nama_perusahaan`);
+
+--
+-- Ketidakleluasaan untuk tabel `karyawan`
+--
+ALTER TABLE `karyawan`
+  ADD CONSTRAINT `fk_detailkaryawan` FOREIGN KEY (`detail_karyawan`) REFERENCES `detail_karyawan` (`id`);
+
+--
+-- Ketidakleluasaan untuk tabel `stok_obat`
+--
+ALTER TABLE `stok_obat`
+  ADD CONSTRAINT `fk_kode_brng` FOREIGN KEY (`kode_barang`) REFERENCES `faktur` (`kode_barang`),
+  ADD CONSTRAINT `fk_kode_satuan` FOREIGN KEY (`kode_satuan`) REFERENCES `faktur` (`kode_satuan`),
+  ADD CONSTRAINT `fk_nama_brng` FOREIGN KEY (`nama_barang`) REFERENCES `faktur` (`nama_barang`),
+  ADD CONSTRAINT `fk_no_faktur` FOREIGN KEY (`no_faktur`) REFERENCES `faktur` (`no_faktur`);
+
+--
+-- Ketidakleluasaan untuk tabel `transaksi`
+--
+ALTER TABLE `transaksi`
+  ADD CONSTRAINT `fk_active` FOREIGN KEY (`active`) REFERENCES `stok_obat` (`active`),
+  ADD CONSTRAINT `fk_idpelanggan` FOREIGN KEY (`id_pelanggan`) REFERENCES `pelanggan` (`id`),
+  ADD CONSTRAINT `fk_nama_barang` FOREIGN KEY (`nama_barang`) REFERENCES `barang` (`nama_barang`),
+  ADD CONSTRAINT `fk_nama_pelanggan` FOREIGN KEY (`nama_pelanggan`) REFERENCES `pelanggan` (`nama_pelanggan`),
+  ADD CONSTRAINT `fk_namakaryawan` FOREIGN KEY (`nama_karyawan`) REFERENCES `karyawan` (`nama_karyawan`),
+  ADD CONSTRAINT `fk_nm_barang` FOREIGN KEY (`nama_barang`) REFERENCES `stok_obat` (`nama_barang`),
+  ADD CONSTRAINT `fk_status` FOREIGN KEY (`status_barang`) REFERENCES `stok_obat` (`status`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
