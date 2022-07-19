@@ -1,0 +1,10 @@
+1. SELECT * FROM faktur_penjualan;
+2. SELECT id_pelanggan, id_karyawan FROM `faktur_penjualan`
+3. SELECT * FROM `faktur_penjualan` WHERE jumlah > 10
+4. SELECT * FROM `faktur_supply` WHERE jumlah_obat < 100 ORDER BY tanggal
+5. SELECT * FROM `faktur_supply` WHERE jumlah_obat < 100 ORDER BY tanggal DESC
+6. SELECT id_pelanggan, nama, alamat FROM `pelanggan` WHERE alamat = "Cikarang" ORDER BY alamat
+7. SELECT * FROM `supplier` WHERE kota = "Jakarta Timur"
+8. SELECT * FROM `obat` WHERE harga > 10000 order BY stock ASC
+9. SELECT * FROM `karyawan` WHERE kota <> "Bekasi"
+10. SELECT * FROM `Obat` ORDER BY harga
