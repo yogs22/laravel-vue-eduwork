@@ -1,0 +1,8 @@
+TASK 5 UPDATES AND DELETES
+
+1. UPDATE `faktur_penjualan` SET `id_karyawan`='[6]' WHERE 'no' = 1;
+2. INSERT INTO `faktur_penjualan`(`no`, `tanggal`, `id_pelanggan`, `id_karyawan`, `id_obat`, `jumlah`, `total`, `pajak`, `total_bayar`)
+	VALUES ('','24-06-2022','8','1','8','10','3490','349','3839')
+3. DELETE FROM `faktur_penjualan` WHERE no = 24;
+4. SELECT * FROM `faktur_penjualan` WHERE no = 23;
+5. DELETE FROM `faktur_penjualan` WHERE no = 23;
