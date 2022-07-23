@@ -1,0 +1,89 @@
+SELECT *FROM data_pembeli;
+
+
+
+
+
+
+
+
+SELECT nama_pembeli, alamat_pembeli FROM data_pembeli; 
+
+
+
+
+
+
+
+
+SELECT * FROM `pembeli` WHERE jumlah_beli >=2;
+
+
+
+
+
+
+
+
+SELECT * FROM `pembeli` WHERE jumlah_beli > 4;
+
+
+
+
+
+
+
+
+SELECT nama_pembeli, jumlah_beli FROM `pembeli` WHERE jumlah_beli >=3;
+
+
+
+
+
+
+
+
+SELECT nama_pembeli FROM `pembeli` WHERE jumlah_beli >= 4;
+
+
+
+
+
+
+
+SELECT * FROM `pembeli` WHERE alamat_pembeli = 'Jakarta';
+
+
+
+
+
+
+
+
+SELECT nama_pembeli, alamat_pembeli FROM `pembeli` WHERE alamat_pembeli = 'Cilacap';
+
+
+
+
+
+
+
+
+
+SELECT * FROM `pembeli` WHERE alamat_pembeli = 'Cilacap' and jumlah_beli >= 3;
+
+
+
+
+
+
+SELECT * FROM `pembeli` WHERE alamat_pembeli = 'Cilacap' & 'Bogor' and jumlah_beli >= 3;
+
+
+
+
+
+
+
+
+
