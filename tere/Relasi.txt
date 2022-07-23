@@ -1,0 +1,24 @@
+Dapat dilihat, pada database apotek memiliki 4 tabel yaitu tabel data_pembeli, tabel obat, tabel pembeli, dan tabel penjualan.
+
+
+
+
+
+
+
+Dan, disini untuk relasinya yaitu pada id_pembeli (tabel obat) dengan id (pembeli), lalu pada tabel pembeli terdapat 3 relasi ke tabel penjualan dan tabel data_pembeli
+
+
+
+
+
+
+
+
+Dan, berikut data pada tabel data pembeli, terdapat 2 data nama_pembeli
+
+
+
+
+
+Dan, karna di awal sudah membuat relasinya, maka dapat dilihat pada data tabel penjualan, ada id_pembeli 1,2,3. Maka dapat kita ketahui, pada id_pembeli 1 yaitu Regina, dengan umur 19, dan alamat dibandung, dilayani oleh penjual yang bernama ratih pada tanggak 2022-07-18
