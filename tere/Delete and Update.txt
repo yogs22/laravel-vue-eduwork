@@ -1,0 +1,49 @@
+﻿UPDATE `pembeli` SET `nama_pembeli`='[Randi]' WHERE `alamat_pembeli` = 'Bogor';
+
+
+
+
+
+
+
+
+
+
+
+DELETE FROM `pembeli` WHERE `nama_pembeli`='[Randi]';
+
+
+
+
+
+
+
+
+
+
+
+DELETE FROM `pembeli` WHERE `nama_pembeli`='Ardi';
+
+
+
+
+
+
+
+
+
+
+
+UPDATE `data_pembeli` SET `umur`='22' WHERE id = 1
+
+
+
+
+
+
+
+
+
+
+UPDATE `data_pembeli` SET `umur`='15' WHERE id = 10;
+
