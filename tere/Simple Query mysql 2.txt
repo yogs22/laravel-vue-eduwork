@@ -1,0 +1,60 @@
+﻿SELECT * FROM `data_pembeli` ORDER BY Email DESC;
+
+
+
+
+
+
+
+
+
+SELECT * FROM `data_pembeli` ORDER BY alamat_pembeli ASC;
+
+
+
+
+
+
+
+
+
+SELECT * FROM `data_pembeli` WHERE alamat_pembeli LIKE ‘%Bogor%';
+
+
+
+
+
+
+
+SELECT * FROM `data_pembeli` WHERE alamat_pembeli LIKE '%Cilacap%';
+
+
+
+
+
+
+
+
+
+SELECT alamat_pembeli, SUM(jumlah_beli) as total FROM `pembeli` GROUP BY alamat_pembeli;
+
+SELECT * FROM `data_pembeli` ORDER BY umur;
+
+
+
+
+
+
+SELECT alamat_pembeli, SUM(jumlah_beli) as total FROM `pembeli` GROUP BY alamat_pembeli DESC;
+
+SELECT * FROM `data_pembeli` ORDER BY nama_pembeli, umur;
+
+SELECT nama_pembeli, alamat_pembeli, umur FROM `data_pembeli` ORDER BY umur, nama_pembeli;
+
+
+
+
+
+
+
+
