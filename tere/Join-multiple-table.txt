@@ -1,0 +1,16 @@
+SELECT pembeli.id, nama_pembeli, jumlah_beli,alamat_pembeli, nama_penjual, tanggal_transaksi, nama_obat, jenis_obat FROM `pembeli` 
+JOIN `penjualan` ON pembeli.id = penjualan.id_pembeli 
+JOIN `obat` ON pembeli.id = obat.id_pembeli 
+ORDER BY `pembeli`.`jumlah_beli` ASC;
+
+
+SELECT nama_pembeli, jumlah_beli,alamat_pembeli, nama_penjual, nama_obat, jenis_obat FROM `pembeli` 
+JOIN `penjualan` ON pembeli.id = penjualan.id_pembeli 
+JOIN `obat` ON pembeli.id = obat.id_pembeli 
+WHERE jumlah_beli>=4;
+
+
+SELECT data_pembeli.nama_pembeli, umur, data_pembeli.alamat_pembeli FROM `data_pembeli` 
+JOIN `pembeli` ON pembeli.nama_pembeli = data_pembeli.nama_pembeli 
+JOIN `obat` ON pembeli.id = obat.id_pembeli;
+
