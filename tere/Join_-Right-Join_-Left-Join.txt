@@ -1,0 +1,18 @@
+SELECT * FROM `pembeli` INNER JOIN `data_pembeli` ON pembeli.id = data_pembeli.id;
+
+
+
+
+
+
+
+
+SELECT * FROM `pembeli` JOIN `data_pembeli` ON pembeli.id = data_pembeli.id WHERE umur>=22;
+
+
+SELECT * FROM `pembeli` JOIN `data_pembeli` ON pembeli.id = data_pembeli.id JOIN `penjualan` ON pembeli.id = penjualan.id_pembeli;
+
+SELECT pembeli.id, pembeli.nama_pembeli, jumlah_beli, nama_penjual, tanggal_transaksi FROM `pembeli` JOIN `data_pembeli` ON pembeli.id = data_pembeli.id JOIN `penjualan` ON pembeli.id = penjualan.id_pembeli ORDER BY jumlah_beli ASC;
+
+SELECT pembeli.nama_pembeli, pembeli.alamat_pembeli, umur, no_hp, nama_obat, jenis_obat FROM `pembeli` JOIN `data_pembeli` ON pembeli.id = data_pembeli.id JOIN `penjualan` ON pembeli.id = penjualan.id_pembeli JOIN `obat` ON pembeli.id = obat.id_pembeli ORDER BY alamat_pembeli;
+
