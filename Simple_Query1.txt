@@ -1,0 +1,23 @@
+        SIMPLE QUERY 1
+       ================
+
+1. (a) SELECT * FROM `data_supplier`;
+   (b) SELECT * FROM `data_supplier` WHERE jabatan="Manager";
+   (c) SELECT * FROM `data_supplier` WHERE tanggal_join="2022-07-31";
+--------------------------------------------------------------
+2. (a) SELECT * FROM `karyawan`;
+   (b) SELECT * FROM `karyawan` WHERE Jabatan="Crew Store";
+--------------------------------------------------------------
+3. (a) SELECT * FROM `detail_transasksi`;
+   (b) SELECT * FROM `detail_transasksi` WHERE harga > 20000;
+   (c) SELECT * FROM `detail_transasksi` WHERE harga <= 20000;
+   (d) SELECT * FROM `detail_transasksi` WHERE id_transaksi=3;
+--------------------------------------------------------------
+4. (a) SELECT * FROM `pelanggan`;
+   (b) SELECT * FROM `pelanggan` WHERE alamat="Gorontalo";
+   (c) SELECT nama_pelanggan, agama FROM `pelanggan` WHERE alamat="Jakarta";
+--------------------------------------------------------------
+5. (a) SELECT * FROM `faktur_obat`;
+   (b) SELECT * FROM `faktur_obat` WHERE id_obat >=2;
+   (c) SELECT id_faktur FROM `faktur_obat` WHERE id_obat =4;
+--------------------------------------------------------------
