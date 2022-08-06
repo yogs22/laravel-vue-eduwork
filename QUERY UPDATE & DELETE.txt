@@ -1,0 +1,18 @@
+      QUERY UPDATE & DELETE
+   ===========================
+1. UPDATE karyawan SET Jabatan = "Assisten Manager"
+   WHERE nama_karyawan = "Nasrun Habu";
+----------------------------------------------
+2. (a) INSERT INTO `karyawan` (`id_karyawan`, `nama_karyawan`, `Jabatan`) VALUES ('4', 'Lamran', 'Manager');
+   (b) DELETE FROM `karyawan` WHERE nama_karyawan = "Lamran";
+---------------------------------------------------------
+3. UPDATE karyawan SET nama_karyawan = "Taufik L. Pratama"
+   WHERE nama_karyawan = "Taufik Pratama";
+---------------------------------------------------------------
+4. (a) INSERT INTO `detail_karyawan` (`id`, `tempat_lahir`, `tanggal_lahir`, `agama`, `alamat`, `pendidikan`, `email`, `no_telpon`) VALUES       
+       (NULL, 'Randangan', '1998-02-26', 'Kristen', 'Marisa', 'SMA', 'lavian@gmail.com', '081222233356');
+    ---------------------------------------------------
+   (b) DELETE FROM `detail_karyawan` WHERE id = 4;
+----------------------------------------------------------------
+5. UPDATE `detail_karyawan` SET no_telpon = "0213665665"
+   WHERE id = 2;
