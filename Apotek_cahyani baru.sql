@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 02 Agu 2022 pada 16.46
+-- Waktu pembuatan: 06 Agu 2022 pada 02.49
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.11
 
@@ -51,7 +51,8 @@ INSERT INTO `data_supplier` (`id`, `tanggal_join`, `nama_perusahaan`, `alamat`, 
 (7, '2022-07-31', 'PT Apex Pharma Indonesia', 'Menara Batavia Lt 22\r\nJl KH Masyur Kav 126 JAKARTA – 10220\r\nTelp: 021-5746695 Fax: 021-5724515\r\nPabrik: Jl. Raya Serang Km. 11,5 Ds. Bunder Cikupa Tangerang 15710\r\nTelp: 021-5960339, 5960340 Fax: 021-5960341', 'Lamran Lakudi', 'Manager', 'admin@apexfarma.id', '0213326588'),
 (8, '2022-07-31', 'PT ASTA Medica, Transfarma Medica Indah', 'Wisma Pondok Indah Lt 4\r\nJl Sultan Iskandar Muda Blok V-TA Pondok Indah JAKARTA – 12310\r\nTelp: 021-7697323 Fax:021-7697328', 'Lusiana Make', 'Direktur', 'halo@astamedic.com', '0214587696'),
 (9, '2022-07-31', 'PT AstraZeneca Indonesia', 'Siemens Lt.3 Kav 88, Jl. T. B. Simatupang, Kebagusan, Ps. Minggu, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12520, Indonesia\r\nTelp: 021-78835777\r\nPabrik: Jl. Raya Kasrie 110, Pandaan 67156 Jawa Timur Telp: 0343-631761', 'Konyun Vishu', 'Direktur', 'info@astrazeneca.co.id', '0218577361'),
-(10, '2022-07-31', 'PT Bayer Indonesia Tbk', 'Mid Plaza I Lt 14 Jl Jenderal Sudirman Kav. 10-11\r\nJAKARTA – 10220 PO BOX 3098/Jakarta 10002\r\nTelp.: 021-5703661 Fax.: 021-5700591\r\nPabrik: Jl. Raya Jakarta-Bogor Km. 38 Jakarta\r\nTelp.: 021-8710421-425', 'Vroy Ahmad Zailani', 'Manager', 'info@buyerindonesia.com', '0218889633');
+(10, '2022-07-31', 'PT Bayer Indonesia Tbk', 'Mid Plaza I Lt 14 Jl Jenderal Sudirman Kav. 10-11\r\nJAKARTA – 10220 PO BOX 3098/Jakarta 10002\r\nTelp.: 021-5703661 Fax.: 021-5700591\r\nPabrik: Jl. Raya Jakarta-Bogor Km. 38 Jakarta\r\nTelp.: 021-8710421-425', 'Vroy Ahmad Zailani', 'Manager', 'info@buyerindonesia.com', '0218889633'),
+(11, '2022-07-29', 'PT. Medica Abadi', 'Jl. Janti Gg. Puntodewo No.167 Banguntapan, Bantul, D.I. Yogyakarta, 00000', 'Alex Robinhas', 'Direktur', 'info@medicabadi.com', '0215569996');
 
 -- --------------------------------------------------------
 
@@ -332,7 +333,7 @@ ALTER TABLE `transaksi`
 -- AUTO_INCREMENT untuk tabel `data_supplier`
 --
 ALTER TABLE `data_supplier`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `detail_karyawan`
