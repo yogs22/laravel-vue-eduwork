@@ -1,0 +1,2 @@
+SELECT * FROM 'daftar_obat'
+WHERE stock > 50
