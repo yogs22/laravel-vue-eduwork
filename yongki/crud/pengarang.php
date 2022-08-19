@@ -13,14 +13,28 @@
 <body>
 
 <center>
-    <a href="index.php">Buku</a> |
-    <a href="penerbit.php">Penerbit</a> |
-    <a href="pengarang.php">Pengarang</a> |
-    <a href="katalog.php">Katalog</a>
-    <hr>
-</center>
+    <style type="text/css">
+    a {
+      font: sans-serif;
+      line-height: 1.70em;
+      font-size: 30px;
+      color: black;
+    }
+    </style>
 
-<a href="addpengarang.php">Add New pengarang</a><br/><br/>
+    <nav class="navbar navbar-dark bg-info fixed-top">
+    <a class="mx-auto" style="width: -100px;" href="index.php">Buku</a>
+    <a class="mx-auto" style="width: -100px;"href="penerbit.php">Penerbit</a>
+    <a class="mx-auto" style="width: -100px;"href="pengarang.php">Pengarang</a>
+    <a class="mx-auto" style="width: -100px;"href="katalog.php">Katalog</a>
+
+    </nav>
+</center>
+<br/><br/>
+<br></br>
+
+<a class="mx-auto" style="color: darkblue" style="font-size: 10px;" href="addbuku.php">Add New Buku</a>
+
  <div class="table-responsive">
     <table class="table table-striped" width='80%' border=1>
  
