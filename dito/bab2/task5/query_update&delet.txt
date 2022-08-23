@@ -1,0 +1,5 @@
+UPDATE `daftar_obat` SET `stock` = '170' WHERE 'stock' = '150';
+UPDATE `daftar_penyakit` SET `nama_penyakit` = 'flu' WHERE 'nama_penyakit' = 'pilek';
+UPDATE `daftar_obat` SET `nama_obat` = 'panadol' WHERE 'nama_obat' = 'bodrexin';
+DELETE FROM `daftar_penyakit` WHERE nama_penyakit = 'pilek';
+DELETE FROM `daftar_obat` WHERE nama_obat = 'mylanta';
