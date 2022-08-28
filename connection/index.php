@@ -12,23 +12,43 @@
     <title>Homepage</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    
 </head>
  
 <body>
+    <nav class="navbar navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">PERPUSTAKKAAN</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="index.php">BUKU</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">PENERBIT</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="script_pengarang/pengarang.php">PENGARANG</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">KATALOG</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-<center>
-    <a href="index.php">Buku</a> |
-    <a href="#">Penerbit</a> |
-    <a href="#">Pengarang</a> |
-    <a href="#">Katalog</a>
-    <hr>
-</center>
-
-<a href="add.php">Add New Buku</a><br/><br/>
+<br/>
+<a class="btn btn-primary" href="add.php" role="button">Add New Buku</a><br/><br/>
  
     <table class="table" width='80%' border=1>
  
-    <tr>
+    <tr style="background-color: blue; color: white;">
         <th>ISBN</th> 
         <th>Judul</th> 
         <th>Tahun</th> 

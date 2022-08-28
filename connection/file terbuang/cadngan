@@ -1,0 +1,10 @@
+//cadangan index//
+
+<center>
+    <a href="index.php">Buku</a> |
+    <a href="#">Penerbit</a> |
+    <a href="script_pengarang/pengarang.php">Pengarang</a> |
+    <a href="#">Katalog</a>
+    <hr>
+</center>
+/================================================
