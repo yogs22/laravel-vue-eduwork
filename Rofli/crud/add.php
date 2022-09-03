@@ -1,6 +1,8 @@
 <html>
     <head>
         <title>Add Buku</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     </head>
     <?php
         include_once("connect.php");
@@ -8,27 +10,27 @@
         $pengarang = mysqli_query($mysqli, "SELECT * FROM pengarang");
         $katalog = mysqli_query($mysqli, "SELECT * FROM katalog");
     ?>
-    <body>
-        <a href="index.php">Go Home</a>
-
+    <body style="padding: 20px 0px 0px 50px;">
+        <a class="btn btn-primary btn-sm" href="index.php"> < Go Home</a>
+        <br><br>
         <form action="add.php" method="post" name="form1">
             <table width="25%" border="0">
                 <tr>
                     <td>ISBN</td>
-                    <td><input type="text" name="isbn"></td>
+                    <td><input type="text" name="isbn" class="form-control"></td>
                 </tr>
                 <tr>
                     <td>Judul</td>
-                    <td><input type="text" name="judul"></td>
+                    <td><input type="text" name="judul" class="form-control"></td>
                 </tr>
                 <tr>
                     <td>Tahun</td>
-                    <td><input type="text" name="tahun"></td>
+                    <td><input type="text" name="tahun" class="form-control"></td>
                 </tr>
                 <tr>
                     <td>Penerbit</td>
                     <td>
-                        <select name="id_penerbit">
+                        <select name="id_penerbit" class="form-control">
                             <?php
                                 while($penerbit_data = mysqli_fetch_array($penerbit)){
                                     echo "<option value='".$penerbit_data['id_penerbit']."'>".$penerbit_data['nama_penerbit']."</option>";
@@ -40,7 +42,7 @@
                 <tr>
                     <td>Pengarang</td>
                     <td>
-                        <select name="id_pengarang">
+                        <select name="id_pengarang" class="form-control">
                             <?php
                                 while($pengarang_data = mysqli_fetch_array($pengarang)){
                                     echo "<option value='".$pengarang_data['id_pengarang']."'>".$pengarang_data['nama_pengarang']."</option>";
@@ -52,7 +54,7 @@
                 <tr>
                     <td>Katalog</td>
                     <td>
-                        <select name="id_katalog">
+                        <select name="id_katalog" class="form-control">
                             <?php
                                 while($katalog_data = mysqli_fetch_array($katalog)){
                                     echo "<option value='".$katalog_data['id_katalog']."'>".$katalog_data['nama']."</option>";
@@ -63,15 +65,15 @@
                 </tr>
                 <tr>
                     <td>Qty Stok</td>
-                    <td><input type="text" name="qty_stok"></td>
+                    <td><input type="text" name="qty_stok" class="form-control"></td>
                 </tr>
                 <tr>
                     <td>Harga Pinjam</td>
-                    <td><input type="text" name="harga_pinjam"></td>
+                    <td><input type="text" name="harga_pinjam" class="form-control"></td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td><input type="submit" name="Submit" value="Add"></td>
+                    <td><input type="submit" name="Submit" class="btn btn-primary" value="Add"></td>
                 </tr>
             </table>
         </form>
