@@ -1,18 +1,18 @@
 <?php
     include_once("../connection.php");
-    $pengarang = mysqli_query($conn, "SELECT * FROM pengarang
-                                        ORDER BY id_pengarang ASC");
+    $penerbit = mysqli_query($conn, "SELECT * FROM penerbit
+                                        ORDER BY id_penerbit ASC");
 ?>
  
 <html>
 <head>    
-    <title>Data Pengarang</title>
+    <title>Data Penerbit</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </head>
  
 <body>
-    <nav class="navbar navbar-expand-lg bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">PERPUSTAKAAN</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,15 +25,15 @@
                           <a class="nav-link active" aria-current="page" href="../index.php">BUKU</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="../script_penerbit/penerbit.php">PENERBIT</a>
+                          <a class="nav-link" href="#">PENERBIT</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="pengarang.php">PENGARANG</a>
+                          <a class="nav-link" href="../script_pengarang/pengarang.php">PENGARANG</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="../script_katalog/katalog.php">KATALOG</a>
                         </li>
-                        &nbsp;&nbsp;<a class="btn btn-primary " href="add_pengarang.php" role="button">Tambah Pengarang Baru</a>
+                        &nbsp;&nbsp;<a class="btn btn-primary " href="add_penerbit.php" role="button">Tambah Penerbit Baru</a>
                     </ul>
                 </div>
             </div>
@@ -45,25 +45,24 @@
     <table class="table" width='80%' border=1>
  
     <tr style="background-color: black; color: white;">
-        <th>ID Pengarang</th> 
-        <th>Nama Pengarang</th> 
+        <th>ID Penerbit</th> 
+        <th>Nama Penerbit</th> 
         <th>Email</th> 
         <th>Telepon</th>
         <th>Alamat</th>
         <th style="text-align: center;">Tindakan</th>
     </tr>
     <?php  
-        while($data_pengarang = mysqli_fetch_array($pengarang)) {
+        while($data_penerbit = mysqli_fetch_array($penerbit)) {
             echo "<tr>";
-            echo "<td>".$data_pengarang['id_pengarang']."</td>";
-            echo "<td>".$data_pengarang['nama_pengarang']."</td>";
-            echo "<td>".$data_pengarang['email']."</td>";    
-            echo "<td>".$data_pengarang['telp']."</td>";    
-            echo "<td>".$data_pengarang['alamat']."</td>";       
-            echo "<td><a class='btn btn-primary' href='edit.php?isbn=$data_pengarang[id_pengarang]'>Edit</a> &nbsp; <a class='btn btn-danger' href='del_pengarang.php?id_pengarang=$data_pengarang[id_pengarang]'>Delete</a></td></tr>";        
+            echo "<td>".$data_penerbit['id_penerbit']."</td>";
+            echo "<td>".$data_penerbit['nama_penerbit']."</td>";
+            echo "<td>".$data_penerbit['email']."</td>";    
+            echo "<td>".$data_penerbit['telp']."</td>";    
+            echo "<td>".$data_penerbit['alamat']."</td>";       
+            echo "<td> <a class='btn btn-primary' href='edit_penerbit.php?id_penerbit=$data_penerbit[id_penerbit]'>Edit</a> &nbsp; <a class='btn btn-danger' href='del_penerbit.php?id_penerbit=$data_penerbit[id_penerbit]'>Delete</a></td></tr>";     
         }
     ?>
     </table>
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 </body>
 </html>

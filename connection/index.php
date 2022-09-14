@@ -29,13 +29,13 @@
                           <a class="nav-link active" aria-current="page" href="index.php">BUKU</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">PENERBIT</a>
+                          <a class="nav-link" href="script_penerbit/penerbit.php">PENERBIT</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="script_pengarang/pengarang.php">PENGARANG</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">KATALOG</a>
+                          <a class="nav-link" href="script_katalog/katalog.php">KATALOG</a>
                         </li>
                     </ul>
                 </div>
