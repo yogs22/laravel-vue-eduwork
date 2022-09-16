@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>VUE JS</title>
+</head>
+<body>
+	<div id="app" v-if='status == "munculkan"'>
+		{{message}} <br><br>
+		<label v-for="user in users">Nama : {{user.nama}}<br> Umur : {{user.umur}}<br><br></label>
+	</div>
+
+</body>
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script type="text/javascript">
+	var app = new Vue({
+		el: '#app',
+		data: {
+			message: 'Halo Nasrun',
+			status: 'munculkan',
+			users: [
+			{
+				nama: 'Nasrun Habu',
+				umur: '25'
+			},
+			{
+				nama: 'Nasrun Habu',
+				umur: '27'
+			},
+			{
+				nama: 'Nasrun Habu',
+				umur: '26'
+			}
+			]
+		}
+	})
+</script>
