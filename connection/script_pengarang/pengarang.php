@@ -9,10 +9,15 @@
     <title>Data Pengarang</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    <!-- link untuk css external -->
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
  
 <body>
-    <nav class="navbar navbar-expand-lg bg-dark fixed-top">
+<!-- Header-->
+<!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">PERPUSTAKAAN</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,12 +44,12 @@
             </div>
         </div>
     </nav>
-    <br/><br/>
-
- 
+<!-- Tutup Navbar -->
+<!-- Tutup Header -->
+<!-- ----------------------------------------------------------------------------------------------------------------------------------------------- -->
+<!-- Content -->
     <table class="table" width='80%' border=1>
- 
-    <tr style="background-color: black; color: white;">
+    <tr class="judulkolom">
         <th>ID Pengarang</th> 
         <th>Nama Pengarang</th> 
         <th>Email</th> 
@@ -52,9 +57,10 @@
         <th>Alamat</th>
         <th style="text-align: center;">Tindakan</th>
     </tr>
+<!-- Script Relasi ke database -->
     <?php  
         while($data_pengarang = mysqli_fetch_array($pengarang)) {
-            echo "<tr>";
+            echo "<tr class='data'>";
             echo "<td>".$data_pengarang['id_pengarang']."</td>";
             echo "<td>".$data_pengarang['nama_pengarang']."</td>";
             echo "<td>".$data_pengarang['email']."</td>";    
@@ -64,6 +70,5 @@
         }
     ?>
     </table>
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 </body>
 </html>

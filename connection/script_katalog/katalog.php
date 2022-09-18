@@ -9,10 +9,15 @@
     <title>Data Katalog</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    <!-- link untuk css external --> 
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
  
 <body>
-    <nav class="navbar navbar-expand-lg bg-dark fixed-top">
+<!-- Header-->
+<!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">PERPUSTAKAAN</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,25 +44,22 @@
             </div>
         </div>
     </nav>
-    <br/><br/>
-
- 
+<!-- Tutup Navbar -->
+<!-- Tutup Header -->
     <table class="table" width='80%' border=1>
- 
-    <tr style="background-color: black; color: white;">
+    <tr class="judulkolom">
         <th>ID Katalog</th> 
         <th>Nama</th> 
         <th style="text-align: center;">Tindakan</th>
     </tr>
         <?php  
             while($data_katalog = mysqli_fetch_array($katalog)) {
-                echo "<tr>";
+                echo "<tr class='data'>";
                 echo "<td>".$data_katalog['id_katalog']."</td>";
                 echo "<td>".$data_katalog['nama']."</td>";      
                 echo "<td><a class='btn btn-primary' href='edit_katalog.php?id_katalog=$data_katalog[id_katalog]'>Edit</a> &nbsp; <a class='btn btn-danger' href='del_katalog.php?id_katalog=$data_katalog[id_katalog]'>Delete</a></td></tr>";        
             }
         ?>
     </table>
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 </body>
 </html>

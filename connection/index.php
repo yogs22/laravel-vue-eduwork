@@ -12,10 +12,15 @@
     <title>Homepage</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    <!-- link untuk css external -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     
 </head>
  
 <body>
+<!-- Header-->
+<!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">PERPUSTAKKAAN</a>
@@ -37,18 +42,18 @@
                         <li class="nav-item">
                           <a class="nav-link" href="script_katalog/katalog.php">KATALOG</a>
                         </li>
+                        &nbsp;&nbsp;<a class="btn btn-primary" href="add.php" role="button">Add New Buku</a>
                     </ul>
                 </div>
             </div>
         </div>
     </nav>
-
-<br/>
-<a class="btn btn-primary" href="add.php" role="button">Add New Buku</a><br/><br/>
- 
+<!-- Tutup Navbar -->
+<!-- Tutup Header -->
+<!-- ----------------------------------------------------------------------------------------------------------------------------------------------- -->
+<!-- Content -->
     <table class="table" width='80%' border=1>
- 
-    <tr style="background-color: blue; color: white;">
+    <tr class="judulkolom">
         <th>ISBN</th> 
         <th>Judul</th> 
         <th>Tahun</th> 
@@ -59,9 +64,10 @@
         <th>Harga Pinjam</th>
         <th>Aksi</th>
     </tr>
+<!-- Script Relasi ke database -->
     <?php  
         while($buku_data = mysqli_fetch_array($buku)) {         
-            echo "<tr>";
+            echo "<tr class='data'>";
             echo "<td>".$buku_data['isbn']."</td>";
             echo "<td>".$buku_data['judul']."</td>";
             echo "<td>".$buku_data['tahun']."</td>";    
