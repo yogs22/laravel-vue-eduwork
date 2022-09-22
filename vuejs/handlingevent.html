@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Handling Event Revisi</title>
+</head>
+<body>
+<div id="example-1">
+    <button v-on:click="counter += 1">Add 1</button>
+    <p>The button above has been clicked {{ counter }} times.</p>
+
+    <br>
+    <!-- `greet` is the name of a method defined below -->
+    <button v-on:click="greet">Greet</button>
+    <br>
+    <button v-on:click="say('hi')">Say hi</button>
+    <button v-on:click="say('Hi Najmina :)')">Say Name</button>
+    <br>
+    <button v-on:click="warn('Form cannot be submitted yet.', $event)">
+    Submit
+    </button>
+    <br>
+    <a v-on:click.stop="doSay('Halo Mbak Mina :)', $event)">testing</a>
+
+    <form v-on:submit.prevent="doThis('Maaf anda belum bisa submit', $event)">
+        <input type="text">
+        <button type="submit">Submit</button>
+        <p ref="test">testing</p>
+        <button @click="doOther()">do Other</button>
+    </form>
+    
+    <div v-on:click.capture="doThose">
+        <form>
+            <input type="text">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+        
+    <div v-on:click.self="doThat">
+        <form>
+        <input type="text">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <a v-on:click.once="clickOnce">Testing</a> <br><br>
+
+    <div v-on:scroll.passive="onScroll">onscrol.pasive</div><br><br>
+
+    <form>
+        <input v-on:keyup.enter="submit">
+        <button type="submit">Submit</button>
+    </form>
+    
+        <input v-on:keyup.page-down="onPageDown"><br>
+    
+        <input v-on:keyup.13="submit"><br>
+
+        <input v-on:keyup.tab="submit"><br>
+
+        <input v-on:keyup.delete="submit"><br>
+
+        <input v-on:keyup.esc="submit"><br>
+
+        <input v-on:keyup.space="submit"><br>
+
+        <input v-on:keyup.up="submit"><br>
+
+        <input v-on:keyup.down="submit"><br>
+
+        <input v-on:keyup.left="submit"><br>
+
+        <input v-on:keyup.right="submit"><br>
+
+        <input v-on:keyup.alt.67="clear"><br>
+
+        <div v-on:click.ctrl="doSomething">
+        <form>
+            <input v-on:keyup.right="submit"><br>
+            <button type="submit">Submit</button>
+        </form>
+        </div><br>
+        
+    </div>
+
+    <button v-on:click.ctrl="onClick">A</button><br>
+
+    <button v-on:click.ctrl.exact="onCtrlClick">A</button><br>
+
+    <button v-on:click.exact="onClick">A</button><br>
+
+    <button v-on:click.left="onClick">A</button><br>
+
+    <button v-on:click.right="onClick">A</button>
+
+    <button v-on:click.midle="onClick">A</button>
+
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script type="text/javascript">
+
+new Vue({
+  el: '#example-1',
+  data: {
+    name: 'Najmina',
+    counter: 0
+  },
+  // define methods under the `methods` object
+  methods: {
+    greet: function (event) {
+      // `this` inside methods points to the Vue instance
+      alert('Hello ' + this.name + '!')
+      // `event` is the native DOM event
+      if (event) {
+        alert(event.target.tagName)
+      }
+    },
+    say: function (message) {
+      alert(message)
+    },
+    warn: function (message, event) {
+      // now we have access to the native event
+      if (event) {
+        event.preventDefault()
+      }
+      alert(message)
+    },
+    doSay: function (message, event) {
+      // now we have access to the native event
+      if (event) {
+        event.stopPropagation()
+      }
+      alert(message)
+    },
+    doThis: function (message, event) {
+      // now we have access to the native event
+      if (event) {
+        event.preventDefault()
+      }
+      alert(message)
+      this.$refs.test.style.color="red"
+    },
+    doOther: function (){
+      alert("Ini Method doOther")
+    },
+    doThose: function (){
+      alert("Ini Method doThose")
+    },
+    doThat: function (){
+      alert("Ini Method doThat")
+    },
+    clickOnce: function (){
+      alert("Ini Method click.Once")
+    }
+  }
+})
+
+Vue.config.keyCodes.f1 = 112
+
+</script>
