@@ -39,7 +39,7 @@
         </div>
     </nav>
 
-    <!-- CONTENT -->
+    <!-- CONTENT  hanya untuk pembaharuan-->
 
 </body>
 </html>
