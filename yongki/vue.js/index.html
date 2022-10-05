@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Basic Component Vue.jsc</title>
+	<title>Basic Component Vue.js</title>
 </head>
 <body>
 <div id="app" v-if="status == 'tampilkan' ">
-  {{ message }} <br> <br>
+  <h1>{{ message }}</h1><br>
   <label v-for="user in users">Name :{{ user.name }}, Umur {{ user.age }}<br></label>
 </div>
 </body>
 </html>
-
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 <script type="text/javascript">
 	var app = new Vue({
