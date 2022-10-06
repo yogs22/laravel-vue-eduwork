@@ -1,3 +1,68 @@
+.nav {
+	background-color: #151515;
+	color: blue;
+	width: 100%;
+	float: left;
+}
+
+/* Tag Branch 
+---------------*/
+.textbranch {
+	color: white;
+	font-size: 24px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 10px;
+}
+ 
+ /* Tag Menu
+ ------------ */
+.menu {
+	float: right;
+	margin-top: 11px;
+	margin-right: 3%;
+	margin-left: 50%;
+}
+
+.menu a {
+	font-family: Sans-serif;
+	font-size: 14px;
+	text-decoration: none;
+	margin-right: 10px;
+}
+
+.active:active{
+	color: white;
+}
+
+/* Tag Tombol "Tambah Buku Baru
+----------------------------------" */
+.tombol {
+	margin-top: 5px;
+	background-color: #1E90FF;
+	border: none;
+	border-radius: 30px;
+	
+	padding: 5px 12px;
+	text-align: center;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+}
+.tombol a {
+	text-decoration: none;
+	color: white;	
+}
+/* Batas NAVBAR */
+/* ==========================================================================================================
+   ========================================================================================================== */
+
+/* Css Content */
+.table {
+	margin-top: 50px;
+}
+
 .judulkolom {
 	background-color: darkgray;
 	color: white;
