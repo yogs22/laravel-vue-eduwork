@@ -21,7 +21,6 @@
 	float: right;
 	margin-top: 11px;
 	margin-right: 3%;
-	margin-left: 50%;
 }
 
 .menu a {
@@ -42,7 +41,6 @@
 	background-color: #1E90FF;
 	border: none;
 	border-radius: 30px;
-	
 	padding: 5px 12px;
 	text-align: center;
 	display: inline-block;
@@ -52,7 +50,7 @@
 }
 .tombol a {
 	text-decoration: none;
-	color: white;	
+	color: white;
 }
 /* Batas NAVBAR */
 /* ==========================================================================================================

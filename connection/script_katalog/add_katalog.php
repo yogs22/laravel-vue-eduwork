@@ -1,6 +1,37 @@
 <html>
 <head>
-	<title>Add katalog</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- link untuk css external -->
+    <link rel="stylesheet" type="text/css" href="../css/add.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/style.css">
+    <style type="text/css">
+    	body {
+	    	background: url(../img/bgPengarang.jpg);
+			background-size: cover;
+			background-position: center;
+		}
+		.kolom {
+			padding-top: 25px;
+			padding-bottom:5px;
+		 	width: 500px;
+ 			height: 300px;
+		}
+		.klinput input[type="text"] {
+			border-radius: 30px;
+			width: 250px;
+			height: 50px;
+			font-size: 22px;
+			padding-left: 15px;
+		}
+		.klinput textarea[name="alamat"]{
+			border-radius:10px;
+			width: 250px;
+			height: 70px;
+		}
+    </style>
+	<title>Tambah Pengarang</title>
 </head>
 
 <?php
@@ -9,22 +40,21 @@
 ?>
  
 <body>
-	<a href="index.php">Go to Home</a>
-	<br/><br/>
- 
-	<form action="add_katalog.php" method="post" name="form1">
-		<table width="25%" border="0">
+	<div class="pembungkus">
+		<div class="tombol"><a href="katalog.php">Go to Home</a></div>
+		<form class="content" action="add_katalog.php" method="post" name="form1">
+			<table width="25%" border="0" class="kolom">
 			<tr> 
-				<td>ID Katalog
-				<td><input type="text" name="id_katalog"></td>
+				<td class="nmkolom">ID Katalog
+				<td class="klinput"><input type="text" name="id_katalog"></td>
 			</tr>
 			<tr> 
-				<td>Nama</td>
-				<td><input type="text" name="nama"></td>
+				<td class="nmkolom">Nama</td>
+				<td class="klinput"><input type="text" name="nama"></td>
 			</tr>
 			<tr> 
 				<td></td>
-				<td><input type="submit" name="add" value="Add"></td>
+				<td class="tombol"><input type="submit" name="add" value="Tambahkan"></td>
 			</tr>
 		</table>
 	</form>

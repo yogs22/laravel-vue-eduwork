@@ -1,8 +1,30 @@
 <html>
 <head>
-	<title>Tambah Penerbit</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- link untuk css external -->
+    <link rel="stylesheet" type="text/css" href="../css/add.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/style.css">
+    <style type="text/css">
+    	body {
+	    	background: url(../img/bgpenerbit.jpg);
+			background-size: cover;
+			background-position: center;
+		}
+		.kolom {
+			padding-top: 25px;
+			padding-bottom:5px;
+		}
+		.klinput textarea[name="alamat"]{
+			border-radius:10px;
+			width: 250px;
+			height: 70px;
+			padding-left: 10px;
+		}
+    </style>
+
+    <title>Tambah Penerbit</title>
 </head>
 
 <?php
@@ -11,38 +33,36 @@
 ?>
  
 <body>
-	<br/>
-	<a class="btn btn-primary " href="penerbit.php" role="button">Go to Penerbit</a>
-	<br/><br/>
- 
-	<form action="add_penerbit.php" method="post" name="form1">
-		<table width="25%" border="0">
-			<tr> 
-				<td>ID Penerbit</td>
-				<td><input type="text" name="id_pengarang"></td>
-			</tr>
-			<tr> 
-				<td>Nama Penerbit</td>
-				<td><input type="text" name="nama_pengarang"></td>
-			</tr>
-			<tr> 
-				<td>Email</td>
-				<td><input type="text" name="email"></td>
-			</tr>
-			<tr> 
-				<td>Telepon</td>
-				<td><input type="text" name="telp"></td>
-			</tr>
-			<tr> 
-				<td>Alamat</td>
-				<td><input type="text" name="alamat"></td>
-			</tr>
-			<tr> 
-				<td></td>
-				<td><input type="submit" name="tambah" value="add"></td>
-			</tr>
-		</table>
-	</form>
+	<div class="pembungkus">
+		<div class="tombol"><a href="penerbit.php">Go to Home</a></div>
+		<form class="content" action="add_penerbit.php" method="post" name="form1">
+			<table width="25%" border="0" class="kolom">
+				<tr> 
+					<td class="nmkolom">ID Penerbit</td>
+					<td class="klinput"><input type="text" name="id_penerbit"></td>
+				</tr>
+				<tr> 
+					<td class="nmkolom">Nama Penerbit</td>
+					<td class="klinput"><input type="text" name="nama_penerbit"></td>
+				</tr>
+				<tr> 
+					<td class="nmkolom">Email</td>
+					<td class="klinput"><input type="text" name="email"></td>
+				</tr>
+				<tr> 
+					<td class="nmkolom">Telepon</td>
+					<td class="klinput"><input type="text" name="telp"></td>
+				</tr>
+				<tr> 
+					<td class="nmkolom">Alamat</td>
+					<td class="klinput"><textarea type="text" name="alamat"></textarea></td>
+				</tr>
+				<tr> 
+					<td></td>
+					<td class="tombol"><input type="submit" name="tambah" value="Tambahkan"></td>
+				</tr>
+			</table>
+		</form>
 	
 	<?php
 	 

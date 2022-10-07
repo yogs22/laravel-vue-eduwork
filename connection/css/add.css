@@ -1,0 +1,67 @@
+body {
+	background: url(../img/bgPerpus.jpg);
+	background-size: cover;
+	background-position: center;
+} 
+.pembungkus {
+	text-align: center;
+	margin-top: 100px;
+	
+}
+.content {
+	display: flex;
+  	justify-content: center;
+  	margin-top: 15px;
+}
+.kolom {
+	padding-left: 70px;
+ 	background-color: rgba(0, 0, 0, 0.4);
+ 	backdrop-filter: blur(5px);
+ 	border-radius: 30px;
+ 	width: 500px;
+ 	height: 420px;
+}
+
+.nmkolom {
+	color: white;
+}
+.klinput input[type="text"] {
+	border-radius: 30px;
+	width: 250px;
+	height: 30px;
+	padding-left: 15px;
+}
+.klinput select[name="id_penerbit"]{
+	border-radius: 30px;
+	width: 120px;
+	height: 30px;
+	text-align: center;
+}
+.klinput select[name="id_pengarang"]{
+	border-radius: 30px;
+	width: 130px;
+	height: 30px;
+	text-align: center;
+}
+.klinput select[name="id_katalog"]{
+	border-radius: 30px;
+	width: 120px;
+	height: 30px;
+	text-align: center;
+}
+.tombol input[type=submit] {
+	margin-top: 5px;
+	width: 150px;
+	background-color: #1E90FF;
+	border: none;
+	border-radius: 30px;
+	padding: 5px 12px;
+	text-align: center;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+}
+.tombol input[type=submit] {
+	color: white;
+	}

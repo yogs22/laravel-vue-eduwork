@@ -1,6 +1,10 @@
 <html>
 <head>
 	<title>Edit Penerbit</title>
+
+	<!-- link untuk css external -->
+    <link rel="stylesheet" type="text/css" href="../css/add.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/style.css">
 </head>
 
 <?php
@@ -18,38 +22,37 @@
 ?>
  
 <body>
-	<a href="penerbit.php">Go to Home</a>
-	<br/><br/>
- 
-	<form action="edit_penerbit.php?id_penerbit=<?php echo $id_penerbit; ?>" method="post">
-		<table width="25%" border="0">
-			<tr> 
-				<td>ID Penerbit</td>
-				<td style="font-size: 11pt;"> <?php echo $id_penerbit; ?> </td>
-			</tr>
-			<tr> 
-				<td>Nama Penerbit</td>
-				<td><input type="text" name="nama_penerbit" value="<?php echo $nama_penerbit; ?>"> </td>
-			</tr>
-			<tr> 
-				<td>Email</td>
-				<td><input type="text" name="email" value=" <?php echo $email; ?> "> </td>
-			</tr>
-			<tr> 
-				<td>Telepon</td>
-				<td><input type="text" name="telp" value=" <?php echo $telp; ?> "></td>
-			</tr>
-			<tr> 
-				<td>Alamat</td>
-				<td><input type="text" name="alamat" value=" <?php echo $alamat; ?> "></td>
-			</tr>
-			<tr> 
-				<td></td>
-				<td><input type="submit" name="update" value="Update"></td>
-			</tr>
-		</table>
-	</form>
-	
+	<div class="pembungkus">
+		<div class="tombol"><a href="penerbit.php">Go to Home</a></div>
+		<form class="content" action="edit_penerbit.php?id_penerbit=<?php echo $id_penerbit; ?>" method="post">
+			<table width="25%" border="0" class="kolom">
+				<tr> 
+					<td class="nmkolom">ID Penerbit</td>
+					<td class="klinput" style="font-size: 14pt; color: blue;"> <?php echo $id_penerbit; ?> </td>
+				</tr>
+				<tr> 
+					<td class="nmkolom">Nama Penerbit</td>
+					<td class="klinput"><input type="text" name="nama_penerbit" value="<?php echo $nama_penerbit; ?>"> </td>
+				</tr>
+				<tr> 
+					<td class="nmkolom">Email</td>
+					<td class="klinput"><input type="text" name="email" value=" <?php echo $email; ?> "> </td>
+				</tr>
+				<tr> 
+					<td class="nmkolom">Telepon</td>
+					<td class="klinput"><input type="text" name="telp" value=" <?php echo $telp; ?> "></td>
+				</tr>
+				<tr> 
+					<td class="nmkolom">Alamat</td>
+					<td class="klinput"><input type="text" name="alamat" value=" <?php echo $alamat; ?> "></td>
+				</tr>
+				<tr> 
+					<td></td>
+					<td class="tombol"><input type="submit" name="update" value="Perbaharui"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
 	<?php
 	 
 		// Check If form submitted, insert form data into users table.

@@ -1,6 +1,10 @@
 <html>
 <head>
 	<title>Edit Buku</title>
+
+	<!-- link untuk css external -->
+    <link rel="stylesheet" type="text/css" href="css/add.css">
+    <link rel="stylesheet" type="text/css" href="CSS/style.css">
 </head>
 
 <?php
@@ -26,74 +30,73 @@
 ?>
  
 <body>
-	<a href="index.php">Go to Home</a>
-	<br/><br/>
- 
-	<form action="edit.php?isbn=<?php echo $isbn; ?>" method="post">
-		<table width="25%" border="0">
-			<tr> 
-				<td>ISBN</td>
-				<td style="font-size: 11pt;"> <?php echo $isbn; ?> </td>
-			</tr>
-			<tr> 
-				<td>Judul</td>
-				<td><input type="text" name="judul" value="<?php echo $judul; ?>"> </td>
-			</tr>
-			<tr> 
-				<td>Tahun</td>
-				<td><input type="text" name="tahun" value=" <?php echo $tahun; ?> "> </td>
-			</tr>
-			<tr> 
-				<td>Penerbit</td>
-				<td>
-					<select name="id_penerbit">
-						<?php 
-						    while($penerbit_data = mysqli_fetch_array($penerbit)) {         
-						    	echo "<option ".($penerbit_data['id_penerbit'] == $id_penerbit ? 'selected' : '')." value='".$penerbit_data['id_penerbit']."'>".$penerbit_data['nama_penerbit']."</option>";
-						    }
-						?>
-					</select>
-				</td>
-			</tr>
-			<tr> 
-				<td>Pengarang</td>
-				<td>
-					<select name="id_pengarang">
-						<?php 
-						    while($pengarang_data = mysqli_fetch_array($pengarang)) {         
-						    	echo "<option ".($pengarang_data['id_pengarang'] == $id_pengarang ? 'selected' : '')." value='".$pengarang_data['id_pengarang']."'>".$pengarang_data['nama_pengarang']."</option>";
-						    }
-						?>
-					</select>
-				</td>
-			</tr>
-			<tr> 
-				<td>Katalog</td>
-				<td>
-					<select name="id_katalog">
-						<?php 
-						    while($katalog_data = mysqli_fetch_array($katalog)) {         
-						    	echo "<option ".($katalog_data['id_katalog'] == $id_katalog ? 'selected' : '')." value='".$katalog_data['id_katalog']."'>".$katalog_data['nama']."</option>";
-						    }
-						?>
-					</select>
-				</td>
-			</tr>
-			<tr> 
-				<td>Qty Stok</td>
-				<td><input type="text" name="qty_stok" value="<?php echo $qty_stok; ?> "></td>
-			</tr>
-			<tr> 
-				<td>Harga Pinjam</td>
-				<td><input type="text" name="harga_pinjam" value="<?php echo $harga_pinjam; ?> "></td>
-			</tr>
-			<tr> 
-				<td></td>
-				<td><input type="submit" name="update" value="Update"></td>
-			</tr>
-		</table>
-	</form>
-	
+	<div class="pembungkus">
+		<div class="tombol"><a href="index.php">Go to Home</a></div>
+		<form class="content" action="edit.php?isbn=<?php echo $isbn; ?>" method="post">
+			<table width="25%" border="0" class="kolom">
+				<tr> 
+					<td class="nmkolom">ISBN</td>
+					<td class="klinput" style="font-size: 14pt; color: white;"> <?php echo $isbn; ?> </td>
+				</tr>
+				<tr> 
+					<td class="nmkolom">Judul</td>
+					<td class="klinput"><input type="text" name="judul" value="<?php echo $judul; ?>"> </td>
+				</tr>
+				<tr> 
+					<td class="nmkolom">Tahun</td>
+					<td class="klinput"><input type="text" name="tahun" value=" <?php echo $tahun; ?> "> </td>
+				</tr>
+				<tr> 
+					<td class="nmkolom">Penerbit</td>
+					<td class="klinput">
+						<select name="id_penerbit">
+							<?php 
+							    while($penerbit_data = mysqli_fetch_array($penerbit)) {         
+							    	echo "<option ".($penerbit_data['id_penerbit'] == $id_penerbit ? 'selected' : '')." value='".$penerbit_data['id_penerbit']."'>".$penerbit_data['nama_penerbit']."</option>";
+							    }
+							?>
+						</select>
+					</td>
+				</tr>
+				<tr> 
+					<td class="nmkolom">Pengarang</td>
+					<td class="klinput">
+						<select name="id_pengarang">
+							<?php 
+							    while($pengarang_data = mysqli_fetch_array($pengarang)) {         
+							    	echo "<option ".($pengarang_data['id_pengarang'] == $id_pengarang ? 'selected' : '')." value='".$pengarang_data['id_pengarang']."'>".$pengarang_data['nama_pengarang']."</option>";
+							    }
+							?>
+						</select>
+					</td class="klinput">
+				</tr>
+				<tr> 
+					<td class="nmkolom">Katalog</td>
+					<td class="klinput">
+						<select name="id_katalog">
+							<?php 
+							    while($katalog_data = mysqli_fetch_array($katalog)) {         
+							    	echo "<option ".($katalog_data['id_katalog'] == $id_katalog ? 'selected' : '')." value='".$katalog_data['id_katalog']."'>".$katalog_data['nama']."</option>";
+							    }
+							?>
+						</select>
+					</td>
+				</tr>
+				<tr> 
+					<td class="nmkolom">Qty Stok</td>
+					<td class="klinput"><input type="text" name="qty_stok" value="<?php echo $qty_stok; ?> "></td>
+				</tr>
+				<tr> 
+					<td class="nmkolom">Harga Pinjam</td>
+					<td class="klinput"><input type="text" name="harga_pinjam" value="<?php echo $harga_pinjam; ?> "></td>
+				</tr>
+				<tr> 
+					<td></td>
+					<td class="tombol"><input type="submit" name="update" value="Perbaharui"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
 	<?php
 	 
 		// Check If form submitted, insert form data into users table.
