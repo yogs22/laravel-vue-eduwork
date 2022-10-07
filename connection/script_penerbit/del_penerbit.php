@@ -1,7 +1,7 @@
 <?php
 include_once("../connection.php");
  
-$id_peerbit = $_GET['id_penerbit'];
+$id_penerbit = $_GET['id_penerbit'];
  
 $result = mysqli_query($conn, "DELETE FROM penerbit WHERE id_penerbit ='$id_penerbit'");
 
