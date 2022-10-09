@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style type="text/css">
+			div {
+				margin-top: 10px;
+			}
+
+			button {
+				color: #fff;
+				background: linear-gradient(315deg, #42d392 25%, #647eff);
+			  	border: none;
+			  	padding: 5px 10px;
+			  	margin: 5px;
+			  	border-radius: 8px;
+			  	curs  or: pointer;
+			}
+		</style>
+		<title>Event Handling</title>
+	</head>
+	<body>
+<!-- percobaan 1 -->
+		<div id="coba1">
+	  		<button v-on:click="count++">Tombol Antrian</button>
+	  		<p>Anda Antrian ke <b>{{ count }}</b> </p>
+		</div>
+<!-- percobaan 2 -->
+		<div id="coba2">
+			<button v-on:click="greet">{{ name }}</button>
+		</div> 
+<!-- percobaan 3 -->
+		<div id="coba3">
+			<button v-on:click="say ('Hi')">Say Hi</button>
+			<button v-on:click="say ('Bye')">Say Bye</button>
+		</div>
+<!-- percobaan 4 -->
+		<div id="coba4">
+			<button v-on:click="warn('Form cannot be submitted yet.', $event)">
+	  			Submit
+			</button>
+			<button v-on:click="(event) => warn('Form cannot be submitted yet.', event)">
+	  			Submit
+			</button>
+ 		</div>
+<!-- percobaan 5 -->
+		<div id="coba5">
+			<!-- the click event's propagation will be stopped -->
+			<a v-on:click.stop="doThis('ini adalah methods Do This')">Ini Adalah Methods.?</a>
+
+			<!-- the submit event will no longer reload the page -->
+			<form v-on:submit.prevent="onsubmit('pesan anda tidak terkirim.', $event)" style="margin-top: 10px">
+				<input ref="test" type="text">
+				<button type="submit">kirim</button>
+			</form>
+<!-- Masih Bingung ..? -------------------------------------------------------------------------------------? -->
+			<!-- modifiers can be chained -->
+			<a v-on:click.stop.prevent="doThat"></a>
+
+			<!-- just the modifier -->
+			<form v-on:submit.prevent></form>
+
+			<!-- only trigger handler if event.target is the element itself -->
+			<!-- i.e. not from a child element -->
+			<div v-on:click.self="doThat">...</div>
+			<!-- use capture mode when adding the event listener -->
+			<!-- i.e. an event targeting an inner element is handled here before being handled by that element -->
+			<div v-on:click.capture="doThis">...</div>
+
+			<!-- the click event will be triggered at most once -->
+			<a v-on:click.once="doThis"></a>
+
+			<!-- the scroll event's default behavior (scrolling) will happen -->
+			<!-- immediately, instead of waiting for `onScroll` to complete  -->
+			<!-- in case it contains `event.preventDefault()`                -->
+			<div v-on:scroll.passive="onScroll">...</div>
+ 		</div>
+
+
+	</body>
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script type="text/javascript">
+// Percobaan 1
+    var coba1 = new Vue({
+        el:'#coba1',
+        data : {
+            count : 0
+        }
+    })
+
+// percobaan 2
+
+    var coba2 = new Vue({
+        el:'#coba2',
+        data : {
+            name : 'nasrun'
+        },
+
+	    // Define methods under the 'Methods' object
+	    methods : {
+	    	greet: function (event) {
+	    		alert('Semangat ' + this.name )
+	    		if (event) {
+	    			alert(event.target.tagName)
+	    		}
+
+	    	}
+	    }
+	})
+
+// Percobaan 3
+    var coba3 = new Vue({
+        el:'#coba3',
+        methods : {
+            say : function (message){
+            	alert(message)
+            }
+        }
+    })
+
+// Percobaan 4
+	var coba4 = new Vue({
+        el:'#coba4',
+        methods: {
+  			warn(message, event) {
+    		// now we have access to the native event
+    			if (event) {
+      				event.preventDefault()
+    			}
+    			alert(message)
+ 			}
+		}
+	})
+// Percobaan 5
+	var coba5 = new Vue({
+        el:'#coba5',
+        methods:{
+		    doThis(message, event) {
+		      // now we have access to the native event
+		      if (event) {
+		        event.preventDefault()
+		      }
+		      alert(message)
+		    },
+
+		    onsubmit(message, event) {
+		      // now we have access to the native event
+		      if (event) {
+		        event.preventDefault()
+		      }
+// Pertanyaan : fungsi dari this.$refs.test.style.color="red"
+		      alert(message)
+		      this.$refs.test.style.color="red"
+		    }
+		}
+	})
+</script>
