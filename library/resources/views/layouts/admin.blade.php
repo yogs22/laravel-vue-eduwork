@@ -120,7 +120,7 @@
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <span class="dropdown-item dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
+          <div class="dropdown-divider"></div><p></p>
           <a href="#" class="dropdown-item">
             <i class="fas fa-envelope mr-2"></i> 4 new messages
             <span class="float-right text-muted text-sm">3 mins</span>
@@ -193,10 +193,59 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item">
+            <a href="{{ url('home') }}" class="nav-link {{ request()->is('home') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-home"></i>
               <p>
                 Home
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url('catalog') }}" class="nav-link {{ request()->is('catalog') ? 'active' : '' }} ">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Catalog
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url('book') }}" class="nav-link {{ request()->is('book') ? 'active' : '' }} ">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Book
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url('member') }}" class="nav-link {{ request()->is('member') ? 'active' : '' }} ">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Member
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url('publisher') }}" class="nav-link {{ request()->is('publisher') ? 'active' : '' }} ">
+              <i class="nav-icon fas fa-pen-fancy"></i>
+              <p>
+                Publisher
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url('transaction') }}" class="nav-link {{ request()->is('transaction') ? 'active' : '' }} ">
+              <i class="nav-icon fas fa-money-bill"></i>
+              <p>
+                Transaction
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url('transactiondetail') }}" class="nav-link {{ request()->is('transactiondetail') ? 'active' : '' }} ">
+              <i class="nav-icon fas fa-file"></i>
+              <p>
+                Transaction Details
               </p>
             </a>
           </li>
@@ -214,7 +263,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Home</h1>
+            <h1 class="m-0">@yield('header')</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
           </div><!-- /.col -->
@@ -266,6 +315,8 @@
 <script src="{{ asset('assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('assets/dist/js/adminlte.js') }}"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 </body>
 </html>
