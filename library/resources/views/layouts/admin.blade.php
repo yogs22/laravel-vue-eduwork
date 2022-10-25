@@ -208,6 +208,38 @@
               </p>
             </a>
           </li>
+          <li class="nav-item menu-open">
+            <a href="{{ url('publisher') }}" class="nav-link {{ request()->is('publisher') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Publisher
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="{{ url('author') }}" class="nav-link {{ request()->is('author') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Author
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="{{ url('book') }}" class="nav-link {{ request()->is('book') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Book
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="{{ url('member') }}" class="nav-link {{ request()->is('member') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Member
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
