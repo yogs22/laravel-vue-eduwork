@@ -2,5 +2,5 @@
 @section('header', 'Book')
 
 @section('content')
-ini adalah halaman Book
+Ini adalah halaman Books
 @endsection

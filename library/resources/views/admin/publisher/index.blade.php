@@ -2,5 +2,5 @@
 @section('header', 'Publisher')
 
 @section('content')
-ini adalah halaman Publisher
+Ini adalah halaman Publisher
 @endsection

@@ -2,11 +2,12 @@
 @section('header', 'Home')
 
 @section('content')
+Ini adalah halaman home
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Ini Adalah Halaman Home</div>
+                <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))

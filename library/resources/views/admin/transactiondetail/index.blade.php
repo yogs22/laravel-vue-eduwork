@@ -2,5 +2,5 @@
 @section('header', 'Transaction Detail')
 
 @section('content')
-ini adalah halaman Transaction Detail
+Ini adalah halaman Transaction Details
 @endsection

@@ -2,5 +2,5 @@
 @section('header', 'Member')
 
 @section('content')
-ini adalah halaman Member
+Ini adalah halaman Member
 @endsection
