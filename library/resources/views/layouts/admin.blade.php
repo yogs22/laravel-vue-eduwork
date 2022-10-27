@@ -226,7 +226,7 @@
           </li>
           <li class="nav-item menu-open">
             <a href="{{ url('book') }}" class="nav-link {{ request()->is('book') ? 'active' : '' }}">
-              <i class="nav-icon fas fa-edit"></i>
+             <i class="fa-duotone fa-grid-2"></i>
               <p>
                 Book
               </p>
@@ -237,6 +237,13 @@
               <i class="nav-icon fas fa-edit"></i>
               <p>
                 Member
+              </p>
+            </a>
+            <li class="nav-item menu-open">
+            <a href="{{ url('transaction') }}" class="nav-link {{ request()->is('transaction') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Transaction
               </p>
             </a>
           </li>
