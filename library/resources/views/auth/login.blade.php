@@ -5,7 +5,7 @@
       <!-- /.login-logo -->
       <div class="card card-outline card-primary">
         <div class="card-header text-center">
-          <a href="http://localhost/eduwork/laravel-vue-eduwork/nasrun/library/public/" class="h1"><b>LOGIN</a>
+          <p class="h1"><b>LOGIN</p>
         </div>
         <div class="card-body">
           <p class="login-box-msg">Sign in to start your session</p>
