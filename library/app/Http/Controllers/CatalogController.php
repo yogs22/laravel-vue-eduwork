@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class CatalogController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +15,7 @@ class CatalogController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.catalog.index');
     }
 
     /**

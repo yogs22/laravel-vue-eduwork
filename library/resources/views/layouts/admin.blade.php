@@ -127,14 +127,54 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item">
+            <a href="{{ route('home')}}" class="nav-link {{ request()->is('home') ? 'active' : ''}}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Home
-                <i class="right fas fa-angle-left"></i>
+                Homii
               </p>
             </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('catalog.index')}}" class="nav-link {{ request()->is('catalog') ? 'active' : ''}}">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Catalog
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('publisher.index')}}" class="nav-link {{ request()->is('publisher') ? 'active' : ''}}">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Publisher
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('author.index')}}" class="nav-link {{ request()->is('author') ? 'active' : ''}}">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Author
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('book.index')}}" class="nav-link {{ request()->is('book') ? 'active' : ''}}">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Book
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('member.index')}}" class="nav-link {{ request()->is('member') ? 'active' : ''}}">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Member
+              </p>
+            </a>
+          </li>
 <!-- batas -->
       </nav>
       <!-- /.sidebar-menu -->
