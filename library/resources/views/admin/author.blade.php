@@ -2,7 +2,10 @@
 @section('header', 'Author')
 
 @section('css')
-
+<!-- Datatables -->
+<link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 @endsection
 
 @section('content')
@@ -15,7 +18,7 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-            <table class="table table-bordered">
+            <table class="table table-stripped table-bordered" id="datatable">
                 <thead>
                     <tr>
                     <th style="width: 10px">No</th>
@@ -101,6 +104,37 @@
 @endsection
 
 @section('js')
+<!-- DataTables  & Plugins -->
+<script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-bs4/js/dataTables.bo') }}otstrap4.min.js"></script>
+<script src="{{ asset('assets/plugins/datatables-responsive/js/dataTables.re') }}sponsive.min.js"></script>
+<script src="{{ asset('assets/plugins/datatables-responsive/js/responsive.bo') }}otstrap4.min.js"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/dataTables.bu') }}ttons.min.js"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.bo') }}otstrap4.min.js"></script>
+<script src="{{ asset('assets/plugins/jszip/jszip.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/pdfmake/pdfmake.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/pdfmake/vfs_fonts.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+<script type="text/javascript">
+  $(function () {
+    $("#datatable").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#datatable_wrapper .col-md-6:eq(0)');
+    // // $('#datatable').DataTable({
+    // //   "paging": true,
+    // //   "lengthChange": false,
+    // //   "searching": false,
+    // //   "ordering": true,
+    // //   "info": true,
+    // //   "autoWidth": false,
+    // //   "responsive": true,
+    // });
+  });
+</script>
+<!-- CRUD Vue Js -->
     <script type="text/javascript">
         var controller = new Vue({
             el: '#controller',
