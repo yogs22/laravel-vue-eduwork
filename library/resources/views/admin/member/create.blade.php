@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('header', 'Publisher')
+@section('header', 'Member')
 
 @section('content')
 <div class="row">
@@ -8,24 +8,24 @@
         <!-- general form elements -->
         <div class="card card-primary">
             <div class="card-header">
-            <h3 class="card-title">Create Publisher</h3>
+            <h3 class="card-title">Create member</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form action="{{ url('publishers/'.$publisher->id) }}" method="POST">
+            <form action="{{ url('members') }}" method="POST">
                 @csrf
-                {{ method_field('PUT') }}
-
                 <div class="card-body">
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" name="name" class="form-control" placeholder="Enter Name" required="" value="{{ $publisher->name }}">
+                        <input type="text" name="name" class="form-control" placeholder="Enter Name" required="">
+                        <label>Gender</label>
+                        <input type="text" name="gender" class="form-control" placeholder="Enter Name" required="">
                         <label>Phone Number</label>
-                        <input type="text" name="phone_number" class="form-control" placeholder="08xxx" required="" value="{{ $publisher->phone_number }}">
+                        <input type="text" name="phone_number" class="form-control" placeholder="08xxx" required="">
                         <label>Address</label>
-                        <input type="text" name="address" class="form-control" placeholder="Enter Address" required="" value="{{ $publisher->address }}">
+                        <input type="text" name="address" class="form-control" placeholder="Enter Address" required="">
                         <label>Email</label>
-                        <input type="text" name="email" class="form-control" placeholder="Enter Email" required="" value="{{ $publisher->email }}">
+                        <input type="text" name="email" class="form-control" placeholder="Enter Email" required="">
                     </div>
                 </div>
                 <div class="card-footer">
