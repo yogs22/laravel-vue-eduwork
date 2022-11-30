@@ -28,6 +28,11 @@ Route::resource('/publishers', App\Http\Controllers\PublisherController::class);
 Route::get('/transactions', [App\Http\Controllers\TransactionController::class, 'index']);
 Route::get('/transactiondetails', [App\Http\Controllers\TransactionDetailController::class, 'index']);
 
+// Routes API
+Route::get('/api/authors', [App\Http\Controllers\AuthorController::class, 'api']);
+Route::get('/api/publishers', [App\Http\Controllers\PublisherController::class, 'api']);
+Route::get('/api/members', [App\Http\Controllers\MemberController::class, 'api']);
+
 // authors
 // Route::get('/authors', [App\Http\Controllers\AuthorController::class, 'index']);
 // Route::get('/authors/create', [App\Http\Controllers\AuthorController::class, 'create']);

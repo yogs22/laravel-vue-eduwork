@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Author;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\FuncCall;
 
 class AuthorController extends Controller
 {
@@ -19,10 +20,15 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        $authors = Author::with('books')->get();
+        return view('admin.author');
+    }
 
-        // return $authors;
-        return view('admin.author', compact('authors'));
+    public function api()
+    {
+        $authors = Author::all();
+        $datatables = datatables()->of($authors)->addIndexColumn();
+
+        return $datatables->make(true);
     }
 
     /**
@@ -47,7 +53,7 @@ class AuthorController extends Controller
             'name' => ['required'],
             'phone_number' => ['required'],
             'address' => ['required'],
-            'email' => ['required']
+            'email' => ['required'],
         ]);
         // $author = New author;
         // $author->name = $request->name;
