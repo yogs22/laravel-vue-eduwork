@@ -86,13 +86,13 @@ class HomeController extends Controller
 
         $data16 = Book::select('*', 'publishers.name')->LeftJoin('publishers', 'publishers.id', '=', 'books.publisher_id')->Union( Book::select('*', 'publishers.name')->RightJoin('publishers', 'publishers.id', '=', 'books.publisher_id'))->get();
 
-        $data17 = Book::select('authors.id', DB::raw('count(books.id) as total_author'))->Join('authors', 'authors.id', '=', 'books.author_id')->get();
+        $data17 = Book::select('authors.id', DB::raw('count(books.id) as total_author'))->where('books.author_id', 3)->Join('authors', 'authors.id', '=', 'books.author_id')->get();
 
         $data18 = Book::select('*')->where('books.price', '>', '10000')->get();
 
-        $data19 = Book::select('*')->Join('publishers', 'publishers.id', '=', 'books.publisher_id')->where('publishers.name', '=', '"%Publisher01%"')->where('books.qty', '>', '10')->get();
+        $data19 = Book::select('*')->Join('publishers', 'publishers.id', '=', 'books.publisher_id')->where('publishers.name', 'like', '%Publisher01%')->where('books.qty', '>', '10')->get();
 
-        $data20 = Member::select('*')->whereMonth('members.created_at', '=', '6')->groupBy('members.name')->get();
+        $data20 = Member::select('*')->whereMonth('members.created_at', '6')->groupBy('members.name')->get();
 
         // return $data20;
         // return $data20;
