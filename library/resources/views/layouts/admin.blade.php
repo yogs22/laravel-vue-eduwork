@@ -136,7 +136,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('catalog.index')}}" class="nav-link {{ request()->is('catalog') ? 'active' : ''}}">
+            <a href="{{ route('catalog.index')}}" class="nav-link {{ request()->is('catalogs') ? 'active' : ''}}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Catalog
@@ -144,7 +144,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('publisher.index')}}" class="nav-link {{ request()->is('publisher') ? 'active' : ''}}">
+            <a href="{{ route('publisher.index')}}" class="nav-link {{ request()->is('publishers') ? 'active' : ''}}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Publisher
@@ -152,7 +152,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('author.index')}}" class="nav-link {{ request()->is('author') ? 'active' : ''}}">
+            <a href="{{ route('author.index')}}" class="nav-link {{ request()->is('authors') ? 'active' : ''}}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Author
@@ -160,7 +160,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('book.index')}}" class="nav-link {{ request()->is('book') ? 'active' : ''}}">
+            <a href="{{ route('book.index')}}" class="nav-link {{ request()->is('books') ? 'active' : ''}}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Book
@@ -168,7 +168,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('member.index')}}" class="nav-link {{ request()->is('member') ? 'active' : ''}}">
+            <a href="{{ route('member.index')}}" class="nav-link {{ request()->is('members') ? 'active' : ''}}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Member
@@ -183,17 +183,6 @@
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
-          </div><!-- /.col -->
-        </div>
-      </div>
-    </div>
     <section class="content">
       <div class="container-fluid">
         @yield('content')
