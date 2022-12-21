@@ -184,7 +184,7 @@
 
   <!-- Content Wrapper. Contains page content -->
     <section class="content">
-      <div class="container-fluid">
+      <div>
         @yield('content')
       </div>
     </section>

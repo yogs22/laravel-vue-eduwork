@@ -14,7 +14,11 @@ class PublisherController extends Controller
      */
     public function index()
     {
-        return view('admin.publisher.index');
+        $publishers = Publisher::with('books')->paginate(5);;
+
+        //return $publishers;
+        
+        return view('admin.publisher.index', compact('publishers'));
     }
 
     /**
@@ -24,7 +28,7 @@ class PublisherController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.publisher.create');
     }
 
     /**
@@ -35,7 +39,18 @@ class PublisherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => ['required', 'min:3'],
+            'email' => ['required', 'unique'],
+            'phone_number' => ['required', 'numeric'],
+            'address' => ['required', 'max:300'],
+            ]);
+
+
+        Publisher::create($request->all());
+
+
+        return redirect()->route('publisher.index');
     }
 
     /**
@@ -57,7 +72,7 @@ class PublisherController extends Controller
      */
     public function edit(Publisher $publisher)
     {
-        //
+        return view('admin.publisher.edit', compact('publisher'));
     }
 
     /**
@@ -67,10 +82,24 @@ class PublisherController extends Controller
      * @param  \App\Models\Publisher  $publisher
      * @return \Illuminate\Http\Response
      */
+    
     public function update(Request $request, Publisher $publisher)
     {
-        //
+        //dd($request->all());
+        $this->validate($request, [
+            'name' => ['required', 'min:3'],
+            'email' => ['required', 'unique'],
+            'phone_number' => ['required', 'numeric'],
+            'address' => ['required', 'max:300'],
+            ]);
+
+
+        $publisher->update($request->all());
+
+
+        return redirect()->route('publisher.index');
     }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -80,6 +109,8 @@ class PublisherController extends Controller
      */
     public function destroy(Publisher $publisher)
     {
-        //
+        $publisher->delete();
+
+        return redirect()->route('publisher.index');
     }
 }

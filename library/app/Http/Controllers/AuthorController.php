@@ -14,7 +14,9 @@ class AuthorController extends Controller
      */
     public function index()
     {
-       return view('admin.author.index');
+       $authors = Author::paginate(5);
+
+        return view('admin.author.index', compact('authors'));
     }
 
     /**

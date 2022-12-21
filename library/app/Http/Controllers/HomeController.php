@@ -185,7 +185,7 @@ class HomeController extends Controller
 
 
         
-        return $data1; 
+        //return $data1; 
         return view('home');
          
     }
