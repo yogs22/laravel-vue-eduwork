@@ -60,7 +60,7 @@ class BookController extends Controller
             'year' => ['required'],
             'publisher_id' => ['required'],
             'author_id' => ['required'],
-            'calatog_id' => ['required'],
+            'catalog_id' => ['required'],
             'qty' => ['required'],
             'price' => ['required'],
         ]);
@@ -113,7 +113,7 @@ class BookController extends Controller
             'year' => ['required'],
             'publisher_id' => ['required'],
             'author_id' => ['required'],
-            'calatog_id' => ['required'],
+            // 'catalog_id' => ['required'],
             'qty' => ['required'],
             'price' => ['required'],
         ]);
