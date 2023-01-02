@@ -1,5 +1,5 @@
 @extends('layouts.admin')
 
 @section('content')
-  Home
+ini adalah halaman dashboard.
 @endsection
