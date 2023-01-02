@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{ asset('assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+  @yield('css')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -129,7 +130,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item">
             <a href="{{ route('home')}}" class="nav-link {{ request()->is('home') ? 'active' : ''}}">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-home"></i>
               <p>
                 Home
               </p>
@@ -137,7 +138,7 @@
           </li>
           <li class="nav-item">
             <a href="{{ route('catalog.index')}}" class="nav-link {{ request()->is('catalogs') ? 'active' : ''}}">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa fa-folder-open"></i>
               <p>
                 Catalog
               </p>
@@ -145,7 +146,7 @@
           </li>
           <li class="nav-item">
             <a href="{{ route('publisher.index')}}" class="nav-link {{ request()->is('publishers') ? 'active' : ''}}">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa fa-bullhorn"></i>
               <p>
                 Publisher
               </p>
@@ -153,7 +154,7 @@
           </li>
           <li class="nav-item">
             <a href="{{ route('author.index')}}" class="nav-link {{ request()->is('authors') ? 'active' : ''}}">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa fa-certificate"></i>
               <p>
                 Author
               </p>
@@ -161,7 +162,7 @@
           </li>
           <li class="nav-item">
             <a href="{{ route('book.index')}}" class="nav-link {{ request()->is('books') ? 'active' : ''}}">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-book"></i>
               <p>
                 Book
               </p>
@@ -169,7 +170,7 @@
           </li>
           <li class="nav-item">
             <a href="{{ route('member.index')}}" class="nav-link {{ request()->is('members') ? 'active' : ''}}">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa fa-users  "></i>
               <p>
                 Member
               </p>
@@ -220,5 +221,8 @@
 <script src="{{ asset('assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('assets/dist/js/adminlte.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+@yield('js')
 </body>
 </html>

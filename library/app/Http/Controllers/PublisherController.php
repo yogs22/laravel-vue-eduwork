@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class PublisherController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +15,7 @@ class PublisherController extends Controller
      */
     public function index()
     {
-        $publishers = Publisher::with('books')->paginate(5);;
+        $publishers = Publisher::all();
 
         //return $publishers;
         
@@ -41,7 +42,7 @@ class PublisherController extends Controller
     {
         $this->validate($request, [
             'name' => ['required', 'min:3'],
-            'email' => ['required', 'unique'],
+            'email' => ['required'],
             'phone_number' => ['required', 'numeric'],
             'address' => ['required', 'max:300'],
             ]);
@@ -88,7 +89,7 @@ class PublisherController extends Controller
         //dd($request->all());
         $this->validate($request, [
             'name' => ['required', 'min:3'],
-            'email' => ['required', 'unique'],
+            'email' => ['required'],
             'phone_number' => ['required', 'numeric'],
             'address' => ['required', 'max:300'],
             ]);
