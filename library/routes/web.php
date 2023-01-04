@@ -27,6 +27,13 @@ Route::get('/members', [App\Http\Controllers\MemberController::class, 'index'])-
 Route::resources(['catalog' => App\Http\Controllers\CatalogController::class]);
 Route::resources(['publisher' => App\Http\Controllers\PublisherController::class]);
 Route::resources(['author' => App\Http\Controllers\AuthorController::class]);
+Route::resources(['member' => App\Http\Controllers\MemberController::class]);
+
+
+Route::get('/api/authors', [App\Http\Controllers\AuthorController::class, 'api']);
+Route::get('/api/publishers', [App\Http\Controllers\PublisherController::class, 'api']);
+Route::get('/api/members', [App\Http\Controllers\MemberController::class, 'api']);
+
 
 
 // /* ROUTE CATALOG */

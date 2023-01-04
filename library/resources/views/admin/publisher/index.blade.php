@@ -33,40 +33,23 @@
                                 <table id="dataTable" class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th style="width: 10px" class="text-center">No</th>
-                                            <th style="width: 300px" class="text-center">Name</th>
+                                            <th style="width: 10px">No</th>
+                                            <th style="width: 350px" class="text-center">Name</th>
                                             <th  class="text-center">Email</th>
                                             <th  class="text-center">Phone Number</th>
-                                            <th  class="text-center">Address</th>
+                                            <th style="width: 250px" class="text-center">Address</th>
                                             <th  class="text-center">Created_at</th>
                                             <th  class="text-center">Update_at</th>
-                                            <th style="width: 130px" class="text-center">Action</th>
+                                            <th style="width: 250px" class="text-center">Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        @foreach($publishers as $keys => $publisher)
-                                        <tr>
-                                            <td class="text-center">{{ $keys+1 }}</td>
-                                            <td>{{$publisher->name}}</td>
-                                            <td>{{$publisher->email}}</td>
-                                            <td class="text-center">{{$publisher->phone_number}}</td>
-                                            <td>{{$publisher->address}}</td>
-                                            <td class="text-center">{{date('H:i:s - d M Y', strtotime($publisher->created_at))}}</td>
-                                            <td class="text-center">{{ date('H:i:s - d M Y', strtotime($publisher->updated_at))}}</td>
-                                            <td class="text-center">
-                                                <a href="#"  @click="editData({{ $publisher }})" class="btn btn-warning btn-sm">Edit</a>
-                                                <a href="#"  @click="deleteData({{ $publisher->id }})" class="btn btn-danger btn-sm">Delete</a>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
                                 </table>
                             </div>
 
                             <div class="modal fade" id="modal-default">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
-                                        <form method="post" :action="actionUrl" autocomplete="off">
+                                        <form method="post" :action="actionUrl" autocomplete="off" @submit="submitForm($event, data.id)">
                                             <div class="modal-header">
                                                 <h4 class="modal-title">Publisher</h4>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -127,68 +110,32 @@
 <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 
-<!-- Page specific script -->
-<script>
-  $(function () {
-    $("#dataTable").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    // $('#example2').DataTable({
-    //   "paging": true,
-    //   "lengthChange": false,
-    //   "searching": false,
-    //   "ordering": true,
-    //   "info": true,
-    //   "autoWidth": false,
-    //   "responsive": true,
-    // });
-  });
-</script>
-
-<!-- CRUD VUE JS-->
 <script type="text/javascript">
-        var controller = new Vue({
-            el :  '#controller',
-            data : {
-                data : {},
-                actionUrl : '{{ route('publisher.index')}}',
-                editStatus : false
+    var actionUrl = '{{ route('publisher.index') }}';
+    var apiUrl = '{{ url('api/publishers') }}';
 
-            },
-            mounted : function() {
-
-            },
-            methods : {
-                addData() {
-                    this.data = {};
-                    this.actionUrl = '{{ route('publisher.index') }}';
-                    this.editStatus = false;
-                    $('#modal-default').modal();
-
-                },
-                editData(data) {
-                    this.data = data;
-                    this.actionUrl = '{{ route('publisher.index') }}'+'/'+data.id;
-                    this.editStatus = true;
-                    $('#modal-default').modal();
-
-                },
-                deleteData(id) {
-                    this.actionUrl = '{{ route('publisher.index') }}'+'/'+id;
-                    if (confirm("Are You Sure .?")) {
-                        axios.post(this.actionUrl, {_method: 'DELETE'} ).then(response =>{ location.reload();
-                        });
-                    }
-
-                }
-
-
-            }
-
-        });
-
+    var columns = [
+        {data: 'DT_RowIndex', class: 'text-center', orderable: true},
+        {data: 'name', class: 'text-left', orderable: false},
+        {data: 'email', class: 'text-left', orderable: false},
+        {data: 'phone_number', class: 'text-center', orderable: false},
+        {data: 'address', class: 'text-left', orderable: false},
+        {data: 'created_at', class: 'text-center', orderable: false},
+        {data: 'updated_at', class: 'text-center', orderable: false},
+        {render: function(index, row, data, meta) {
+            return `
+                <a href="#" class="btn btn-warning btn-sm" onclick="controller.editData(event, ${meta.row})">
+                    Edit
+                </a>
+                <a class="btn btn-danger btn-sm" onclick="controller.deleteData(event, ${data.id} )">
+                    Delete
+                </a>`;
+            }, orderable: false, width: '200px', class: 'text-center'},
+        ];
 
 </script>
+
+<script src="{{ asset('js/data.js') }}"></script>
+
 
 @endsection

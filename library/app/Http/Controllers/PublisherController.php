@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 
 class PublisherController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,10 +19,16 @@ class PublisherController extends Controller
     public function index()
     {
         $publishers = Publisher::all();
-
-        //return $publishers;
         
         return view('admin.publisher.index', compact('publishers'));
+    }
+
+    public function api() 
+    {
+        $publishers = Publisher::all();
+
+        $datatables = datatables()->of($publishers)->addIndexColumn();
+        return $datatables->make(true);
     }
 
     /**
@@ -73,7 +82,7 @@ class PublisherController extends Controller
      */
     public function edit(Publisher $publisher)
     {
-        return view('admin.publisher.edit', compact('publisher'));
+        //
     }
 
     /**
@@ -83,10 +92,8 @@ class PublisherController extends Controller
      * @param  \App\Models\Publisher  $publisher
      * @return \Illuminate\Http\Response
      */
-    
     public function update(Request $request, Publisher $publisher)
     {
-        //dd($request->all());
         $this->validate($request, [
             'name' => ['required', 'min:3'],
             'email' => ['required'],
@@ -94,14 +101,12 @@ class PublisherController extends Controller
             'address' => ['required', 'max:300'],
             ]);
 
-
         $publisher->update($request->all());
 
 
         return redirect()->route('publisher.index');
     }
     
-
     /**
      * Remove the specified resource from storage.
      *
