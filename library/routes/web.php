@@ -21,18 +21,20 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/authors', [App\Http\Controllers\AuthorController::class, 'index'])->name('author.index');
-Route::get('/books', [App\Http\Controllers\BookController::class, 'index'])->name('book.index');
+// Route::get('/books', [App\Http\Controllers\BookController::class, 'index'])->name('book.index');
 Route::get('/members', [App\Http\Controllers\MemberController::class, 'index'])->name('member.index');
 
 Route::resources(['catalog' => App\Http\Controllers\CatalogController::class]);
 Route::resources(['publisher' => App\Http\Controllers\PublisherController::class]);
 Route::resources(['author' => App\Http\Controllers\AuthorController::class]);
 Route::resources(['member' => App\Http\Controllers\MemberController::class]);
+Route::resources(['book' => App\Http\Controllers\BookController::class]);
 
 
 Route::get('/api/authors', [App\Http\Controllers\AuthorController::class, 'api']);
 Route::get('/api/publishers', [App\Http\Controllers\PublisherController::class, 'api']);
 Route::get('/api/members', [App\Http\Controllers\MemberController::class, 'api']);
+Route::get('/api/books', [App\Http\Controllers\BookController::class, 'api']);
 
 
 
