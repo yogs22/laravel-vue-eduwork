@@ -3,7 +3,6 @@ var controller = new Vue({
     data: {
         datas: [],
         data: {},
-        anggota: {},
         actionUrl,
         apiUrl,
         editStatus: false,
@@ -39,7 +38,7 @@ var controller = new Vue({
                 $(event.target).parents('tr').remove();
                 axios.post(this.actionUrl+'/'+id, {_method: 'DELETE'}).then(response =>{
                     alert('Data berhasil dihapus');
-                })
+                });
             }
         },
         submitForm(event, id) {

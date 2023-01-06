@@ -189,7 +189,8 @@
         @yield('content')
       </div>
     </section>
-  </div>  
+    </div>
+    
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <strong>Copyright &copy; 2022 <a href="https://ku-undang.com/" target="_blank"> KU UNDANG ORGANIZER</a>.</strong>
