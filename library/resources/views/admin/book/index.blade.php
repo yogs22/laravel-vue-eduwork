@@ -34,7 +34,7 @@
                     <div class="col-md-4 col-sm-6 col-12" v-for="book in filteredList">
                         <div class="info-box" v-on:click="editData(book)">
                             <span class="info-box-icon bg-info">
-                                <i class="far fa-envelope"></i>
+                                <i class="fas fa-book"></i>
                             </span>
                             <div class="info-box-content">
                                 <span class="info-box-text">@{{ book.title }} ( @{{ book.qty }} )</span>

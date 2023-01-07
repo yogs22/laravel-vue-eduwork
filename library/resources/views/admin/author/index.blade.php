@@ -32,7 +32,7 @@
                             <div class="card-body">
                                 <table id="dataTable" class="table table-bordered">
                                     <thead>
-                                        <tr>
+                                        <tr class="bg-primary">
                                             <th style="width: 10px">No</th>
                                             <th style="width: 350px" class="text-center">Name</th>
                                             <th  class="text-center">Email</th>

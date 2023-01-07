@@ -32,7 +32,7 @@ Route::resources(['book' => App\Http\Controllers\BookController::class]);
 
 
 Route::get('/api/authors', [App\Http\Controllers\AuthorController::class, 'api']);
-Route::get('/api/publishers', [App\Http\Controllers\PublisherController::class, 'api']);
+Route::get('/api/publishers', [App\Http\Controllers\PublisherController::class, 'api'])->name('api.publisher');
 Route::get('/api/members', [App\Http\Controllers\MemberController::class, 'api']);
 Route::get('/api/books', [App\Http\Controllers\BookController::class, 'api']);
 
@@ -53,3 +53,6 @@ Route::get('/api/books', [App\Http\Controllers\BookController::class, 'api']);
 // Route::get('/publishers/{publisher}/edit', [App\Http\Controllers\PublisherController::class, 'edit'])->name('publisher.edit');
 // Route::put('/publishers/{publisher}', [App\Http\Controllers\PublisherController::class, 'update']);
 // Route::delete('/publishers/{publisher}', [App\Http\Controllers\PublisherController::class, 'destroy']);
+
+// route yang di ambil adalah name dari route tersebut.
+// dan untuk memanggill urlnya : url

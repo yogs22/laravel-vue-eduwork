@@ -105,7 +105,7 @@ class MemberController extends Controller
             ]);
 
 
-        Member::update($request->all());
+        $member->update($request->all());
 
 
         return redirect()->route('member.index');

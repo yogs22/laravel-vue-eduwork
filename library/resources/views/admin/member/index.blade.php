@@ -32,15 +32,15 @@
                             <div class="card-body">
                                 <table id="dataTable" class="table table-bordered">
                                     <thead>
-                                        <tr>
+                                        <tr class="bg-indigo">
                                             <th style="width: 10px">No</th>
                                             <th style="width: 350px" class="text-center">Name</th>
                                             <th  class="text-center">Gender</th>
                                             <th  class="text-center">Phone Number</th>
                                             <th style="width: 250px" class="text-center">Address</th>
                                             <th  class="text-center">Email</th>
-                                            <th  class="text-center">Created_at</th>
-                                            <th  class="text-center">Update_at</th>
+                                            <th style="width: 200px" class="text-center">Created_at</th>
+                                            <th style="width: 200px" class="text-center">Update_at</th>
                                             <th style="width: 250px" class="text-center">Action</th>
                                         </tr>
                                     </thead>

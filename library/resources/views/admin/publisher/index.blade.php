@@ -32,14 +32,14 @@
                             <div class="card-body">
                                 <table id="dataTable" class="table table-bordered">
                                     <thead>
-                                        <tr>
+                                        <tr class="bg-primary">
                                             <th style="width: 10px">No</th>
-                                            <th style="width: 350px" class="text-center">Name</th>
-                                            <th  class="text-center">Email</th>
+                                            <th style="width: 280px" class="text-center">Name</th>
+                                            <th style="width: 250px" class="text-center">Email</th>
                                             <th  class="text-center">Phone Number</th>
-                                            <th style="width: 250px" class="text-center">Address</th>
-                                            <th  class="text-center">Created_at</th>
-                                            <th  class="text-center">Update_at</th>
+                                            <th style="width: 200px" class="text-center">Address</th>
+                                            <th style="width: 200px" class="text-center">Created_at</th>
+                                            <th style="width: 200px" class="text-center">Update_at</th>
                                             <th style="width: 250px" class="text-center">Action</th>
                                         </tr>
                                     </thead>
@@ -112,7 +112,7 @@
 
 <script type="text/javascript">
     var actionUrl = '{{ route('publisher.index') }}';
-    var apiUrl = '{{ url('api/publishers') }}';
+    var apiUrl = '{{ route('api.publisher') }}';
 
     var columns = [
         {data: 'DT_RowIndex', class: 'text-center', orderable: true},
