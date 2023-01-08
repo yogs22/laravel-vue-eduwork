@@ -130,9 +130,9 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item">
             <a href="{{ route('home')}}" class="nav-link {{ request()->is('home') ? 'active' : ''}}">
-              <i class="nav-icon fas fa-home"></i>
+              <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Home
+                Dashboard
               </p>
             </a>
           </li>
@@ -184,12 +184,11 @@
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-    <section class="content">
-      <div>
-        @yield('content')
-      </div>
-    </section>
+  <section class="content">
+    <div>
+      @yield('content')
     </div>
+  </section>
     
   <!-- /.content-wrapper -->
   <footer class="main-footer">
