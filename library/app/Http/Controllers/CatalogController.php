@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ValidationRequest;
+use App\Http\Requests\CatalogValidation;
 use App\Models\Catalog;
-use Illuminate\Http\Request;
 
 class CatalogController extends Controller
 {
@@ -36,7 +35,7 @@ class CatalogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ValidationRequest $request)
+    public function store(CatalogValidation $request)
     {
         // $catalog = new Catalog();
         // $catalog->name = $request->name;
@@ -76,7 +75,7 @@ class CatalogController extends Controller
      * @param  \App\Models\Catalog  $catalog
      * @return \Illuminate\Http\Response
      */
-    public function update(ValidationRequest $request, Catalog $catalog)
+    public function update(CatalogValidation $request, Catalog $catalog)
     {
         $catalog->update($request->all());
         return redirect('catalogs');

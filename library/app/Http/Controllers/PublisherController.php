@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PublisherValidation;
 use App\Models\Publisher;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class PublisherController extends Controller
      */
     public function index()
     {
-        return view('admin.publisher.index');
+        $publishers = Publisher::all();
+        return view('admin.publisher.index', compact('publishers'));
     }
 
     /**
@@ -24,7 +26,7 @@ class PublisherController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.publisher.create');
     }
 
     /**
@@ -33,9 +35,10 @@ class PublisherController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PublisherValidation $request)
     {
-        //
+        Publisher::create($request->all());
+        return redirect('publishers');
     }
 
     /**
@@ -57,7 +60,7 @@ class PublisherController extends Controller
      */
     public function edit(Publisher $publisher)
     {
-        //
+        return view('admin.publisher.edit', compact('publisher'));
     }
 
     /**
@@ -67,9 +70,10 @@ class PublisherController extends Controller
      * @param  \App\Models\Publisher  $publisher
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Publisher $publisher)
+    public function update(PublisherValidation $request, Publisher $publisher)
     {
-        //
+        $publisher->update($request->all());
+        return redirect('publishers');
     }
 
     /**
@@ -80,6 +84,7 @@ class PublisherController extends Controller
      */
     public function destroy(Publisher $publisher)
     {
-        //
+        $publisher->delete();
+        return redirect('publishers');
     }
 }
