@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CatalogValidation extends FormRequest
+class AuthorValidation extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,10 @@ class CatalogValidation extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3|max:64'
+            'name'         => 'required|min:3|max:64',
+            'phone_number' => 'required|max:14',
+            'address'      => 'required',
+            'email'        => 'required|email|min:10|max:50'
         ];
     }
 }

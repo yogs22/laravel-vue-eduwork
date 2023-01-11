@@ -1,22 +1,17 @@
 @extends('layouts.admin')
 @section('header', 'Author')
 
+@section('css')
+  
+@endsection
+
 @section('content')
+<div id="controller">
   <div class="card">
     <div class="card-header">
       <h3 class="card-title">Data Author</h3>
-      <a href="{{ url('authors/create') }}" class="btn btn-sm btn-primary float-right">Create New Author</a>
-      {{-- <div class="card-tools">
-        <ul class="pagination pagination-sm float-right">
-          <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-        </ul>
-      </div> --}}
+      <a @click="addData()" class="btn btn-sm btn-primary float-right">Create New Author</a>
     </div>
-    <!-- /.card-header -->
     <div class="card-body p-0">
       <table class="table">
         <thead>
@@ -40,13 +35,12 @@
             <td class="text-center">{{ $author->address }}</td>
             <td class="text-center">{{ date('H:i:s - d M Y', strtotime($author->created_at)) }}</td>
             <td class="text-center">
-              {{-- <a href="{{ url('authors/'.$author->id.'/edit') }}" class="btn btn-sm btn-warning">Edit</a>
+              <a @click="editData({{ $author }})" class="btn btn-sm btn-warning">Edit</a>
               <form action="{{ url('authors', ['id' => $author->id]) }}" method="POST">
                 @csrf
                 @method('delete')
-                <input type="submit" class="btn btn-sm btn-danger" value="Delete" onclick="return confirm('Are you sure?')">
-              </form> --}}
-              //
+                <a @click="deleteData({{ $author->id }})" class="btn btn-sm btn-danger">Delete</a>
+              </form>
             </td>
           </tr>
           @endforeach
@@ -54,4 +48,82 @@
       </table>
     </div>
   </div>
+
+  <div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Create New Author</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form :action="actionUrl" method="POST">
+          @csrf
+          <input type="hidden" name="_method" value="PUT" v-if="editStatus">
+          <div class="modal-body">  
+            <div class="form-group">
+              <label>Nama</label>
+              <input type="text" name="name" class="form-control" placeholder="Enter Name" :value="data.name" required>
+            </div>
+            <div class="form-group">
+              <label>No. HP</label>
+              <input type="text" name="phone_number" class="form-control" placeholder="Enter HP" :value="data.phone_number" required>
+            </div>
+            <div class="form-group">
+              <label>Alamat</label>
+              <input type="text" name="address" class="form-control" placeholder="Enter Address" :value="data.address" required>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" name="email" class="form-control" placeholder="Enter Email" :value="data.email" required>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+@endsection
+
+@section('js')
+  <script type="text/javascript">
+    var controller = new Vue({
+      el: '#controller',
+      data: {
+        data: {},
+        actionUrl: '{{ url('authors') }}',
+        editStatus: false
+      },
+      mounted: function(){},
+      methods: {
+        addData(){
+          this.data = {};
+          this.actionUrl = '{{ url('authors') }}';
+          this.editStatus = false;
+          $('#modal-default').modal();
+        },
+        editData(data){
+          this.data = data;
+          this.actionUrl = '{{ url('authors') }}'+'/'+data.id;
+          this.editStatus = true;
+          $('#modal-default').modal();
+        },
+        deleteData(id){
+          this.actionUrl = '{{ url('authors') }}'+'/'+id;
+
+          if(confirm("Are you sure?")){
+            axios.post(this.actionUrl, {_method: 'DELETE'}).then(response => {
+              location.reload();
+            });
+          }
+        }
+      }
+    });
+  </script>
 @endsection

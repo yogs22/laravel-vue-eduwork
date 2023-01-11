@@ -24,10 +24,10 @@ class PublisherValidation extends FormRequest
     public function rules()
     {
         return [
-            'name'         => 'required',
+            'name'         => 'required|min:3|max:64',
             'phone_number' => 'required|max:14',
             'address'      => 'required',
-            'email'        => 'required|email'
+            'email'        => 'required|email|max:64'
         ];
     }
 }
