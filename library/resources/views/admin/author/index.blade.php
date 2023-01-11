@@ -15,7 +15,7 @@
       <h3 class="card-title">Data Author</h3>
       <a @click="addData()" class="btn btn-sm btn-primary float-right">Create New Author</a>
     </div>
-    <div class="card-body p-0">
+    <div class="card-body">
       <table class="table">
         <thead>
           <tr>
