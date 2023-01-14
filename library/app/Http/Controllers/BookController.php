@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BookValidation;
+use App\Models\Author;
 use App\Models\Book;
+use App\Models\Catalog;
+use App\Models\Publisher;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -14,7 +18,11 @@ class BookController extends Controller
      */
     public function index()
     {
-        return view('admin.book.index');
+        $authors    = Author::all();
+        $catalogs   = Catalog::all();
+        $publishers = Publisher::all();
+
+        return view('admin.book.index', compact('authors', 'catalogs', 'publishers'));
     }
 
     /**
@@ -33,9 +41,9 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BookValidation $request)
     {
-        //
+        Book::create($request->all());
     }
 
     /**
@@ -67,9 +75,9 @@ class BookController extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Book $book)
+    public function update(BookValidation $request, Book $book)
     {
-        //
+        $book->update($request->all());
     }
 
     /**
@@ -80,6 +88,11 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        $book->delete();
+    }
+
+    public function api(){
+        $books = Book::all();
+        return json_encode($books);
     }
 }
