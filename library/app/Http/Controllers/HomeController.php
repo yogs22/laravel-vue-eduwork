@@ -154,6 +154,37 @@ class HomeController extends Controller
                     ->get();
 
         // return $data20;
-        return view('home');
+
+        $totalBooks        = Book::count();
+        $totalMembers      = Member::count();
+        $totalPublishers   = Publisher::count();
+        $totalTransactions = Transaction::whereMonth('date_start', date('m'))->count();
+
+        $dataDonut  = Book::select(DB::raw('COUNT(publisher_id) as total'))->groupBy('publisher_id')->orderBy('publisher_id', 'asc')->pluck('total');
+        $labelDonut = Publisher::orderBy('publishers.id', 'asc')->join('books', 'books.publisher_id', '=', 'publishers.id')->groupBy('publishers.name')->pluck('publishers.name');
+
+        $dataBar  = [];
+        $labelBar = ['Peminjaman', 'Pengembalian'];
+
+        foreach($labelBar as $key => $value){
+            $dataBar[$key]['label']           = $labelBar[$key];
+            $dataBar[$key]['backgroundColor'] = $key == 0 ? 'rgba(60,141,188,0.9)' : 'rgba(210,214,222,1)';
+            $dataMonth = [];
+
+            foreach(range(1,12) as $month){
+                if($key == 0){
+                    $dataMonth[] = Transaction::select(DB::raw('COUNT(*) as total'))->whereMonth('date_start', $month)->first()->total;
+                }else{
+                    $dataMonth[] = Transaction::select(DB::raw('COUNT(*) as total'))->whereMonth('date_end', $month)->first()->total;
+                }
+            }
+
+            $dataBar[$key]['data'] = $dataMonth;
+        }
+
+        $dataPie  = Book::select(DB::raw('COUNT(catalog_id) as total'))->groupBy('catalog_id')->orderBy('catalog_id', 'asc')->pluck('total');
+        $labelPie = Catalog::orderBy('catalogs.id', 'asc')->join('books', 'books.catalog_id', '=', 'catalogs.id')->groupBy('catalogs.name')->pluck('catalogs.name');
+
+        return view('home', compact('totalBooks', 'totalMembers', 'totalPublishers', 'totalTransactions', 'dataDonut', 'labelDonut', 'dataBar', 'dataPie', 'labelPie'));
     }
 }

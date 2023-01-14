@@ -199,6 +199,7 @@
   $.widget.bridge('uibutton', $.ui.button)
 </script>
 <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/chart.js/Chart.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 <script src="{{ asset('assets/dist/js/adminlte.js') }}"></script>
 
