@@ -30,7 +30,7 @@ class PublisherController extends Controller
      */
     public function create()
     {
-        return view('admin.publisher.create');
+        // return view('admin.publisher.create');
     }
 
     /**
@@ -64,7 +64,7 @@ class PublisherController extends Controller
      */
     public function edit(Publisher $publisher)
     {
-        return view('admin.publisher.edit', compact('publisher'));
+        // return view('admin.publisher.edit', compact('publisher'));
     }
 
     /**
@@ -90,5 +90,11 @@ class PublisherController extends Controller
     {
         $publisher->delete();
         return redirect('publishers');
+    }
+
+    public function api(){
+        $publishers = Publisher::all();
+        $datatables = datatables()->of($publishers)->addIndexColumn();
+        return $datatables->make(true);
     }
 }

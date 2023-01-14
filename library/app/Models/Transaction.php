@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Transaction extends Model
 {
     use HasFactory;
+    protected $guarded = ['created_at', 'updated_at'];
 
     public function member(){
         return $this->belongsTo(Member::class);

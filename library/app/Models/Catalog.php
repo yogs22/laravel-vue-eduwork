@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Catalog extends Model
 {
     use HasFactory;
-    protected $fillable = ['name'];
+    protected $guarded = ['created_at', 'updated_at'];
 
     public function books(){
         return $this->hasMany(Book::class);

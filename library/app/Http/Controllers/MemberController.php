@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MemberValidation;
 use App\Models\Member;
 use Illuminate\Http\Request;
 
@@ -33,9 +34,9 @@ class MemberController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MemberValidation $request)
     {
-        //
+        Member::create($request->all());
     }
 
     /**
@@ -69,7 +70,7 @@ class MemberController extends Controller
      */
     public function update(Request $request, Member $member)
     {
-        //
+        $member->update($request->all());
     }
 
     /**
@@ -80,6 +81,12 @@ class MemberController extends Controller
      */
     public function destroy(Member $member)
     {
-        //
+        $member->delete();
+    }
+
+    public function api(){
+        $members = Member::all();
+        $datatables = datatables()->of($members)->addIndexColumn();
+        return $datatables->make(true);
     }
 }

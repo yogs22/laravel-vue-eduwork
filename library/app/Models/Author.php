@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Author extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    protected $guarded = ['created_at', 'updated_at'];
 
     public function books(){
         return $this->hasMany(Book::class);

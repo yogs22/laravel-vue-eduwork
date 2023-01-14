@@ -19,3 +19,7 @@ Route::resource('publishers', PublisherController::class);
 Route::resource('authors', AuthorController::class);
 Route::resource('books', BookController::class);
 Route::resource('members', MemberController::class);
+
+Route::get('api/authors', [AuthorController::class, 'api']);
+Route::get('api/publishers', [PublisherController::class, 'api']);
+Route::get('api/members', [MemberController::class, 'api']);

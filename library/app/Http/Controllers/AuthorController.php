@@ -90,4 +90,10 @@ class AuthorController extends Controller
         $author->delete();
         return redirect('authors');
     }
+
+    public function api(){
+        $authors = Author::all();
+        $datatables = datatables()->of($authors)->addIndexColumn();
+        return $datatables->make(true);
+    }
 }
