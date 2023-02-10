@@ -19,22 +19,26 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/authors', [App\Http\Controllers\AuthorController::class, 'index'])->name('author.index');
 // Route::get('/books', [App\Http\Controllers\BookController::class, 'index'])->name('book.index');
-Route::get('/members', [App\Http\Controllers\MemberController::class, 'index'])->name('member.index');
+// Route::get('/members', [App\Http\Controllers\MemberController::class, 'index'])->name('member.index');
 
+Route::resources(['home' => App\Http\Controllers\HomeController::class]);
 Route::resources(['catalog' => App\Http\Controllers\CatalogController::class]);
 Route::resources(['publisher' => App\Http\Controllers\PublisherController::class]);
 Route::resources(['author' => App\Http\Controllers\AuthorController::class]);
 Route::resources(['member' => App\Http\Controllers\MemberController::class]);
 Route::resources(['book' => App\Http\Controllers\BookController::class]);
+Route::resources(['transaction' => App\Http\Controllers\TransactionController::class]);
 
 
-Route::get('/api/authors', [App\Http\Controllers\AuthorController::class, 'api']);
+Route::get('/api/home', [App\Http\Controllers\HomeController::class, 'api'])->name('api.home');
+Route::get('/api/authors', [App\Http\Controllers\AuthorController::class, 'api'])->name('api.author');
 Route::get('/api/publishers', [App\Http\Controllers\PublisherController::class, 'api'])->name('api.publisher');
-Route::get('/api/members', [App\Http\Controllers\MemberController::class, 'api']);
-Route::get('/api/books', [App\Http\Controllers\BookController::class, 'api']);
+Route::get('/api/members', [App\Http\Controllers\MemberController::class, 'api'])->name('api.member');
+Route::get('/api/books', [App\Http\Controllers\BookController::class, 'api'])->name('api.book');
+Route::get('/api/transactions', [App\Http\Controllers\TransactionController::class, 'api'])->name('api.transaction');
 
 
 

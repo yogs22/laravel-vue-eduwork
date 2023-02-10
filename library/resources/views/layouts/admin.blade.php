@@ -64,8 +64,14 @@
           <span class="badge badge-warning navbar-badge"></span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">Notifications</span>
-          <div class="dropdown-divider"></div>
+          <span class="dropdown-item dropdown-header">
+            @foreach (get_notifications() as $book) 
+              <p> {{ $book->title }} </p>
+            @endforeach
+          </span>
+          <div class="dropdown-divider">
+            
+          </div>
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
       </li>
@@ -127,9 +133,9 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+              with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="{{ route('home')}}" class="nav-link {{ request()->is('home') ? 'active' : ''}}">
+            <a href="{{ route('home.index') }}" class="nav-link {{ request()->is('home') ? 'active' : ''}}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -137,7 +143,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('catalog.index')}}" class="nav-link {{ request()->is('catalogs') ? 'active' : ''}}">
+            <a href="{{ route('catalog.index')}}" class="nav-link {{ request()->is('catalog') ? 'active' : ''}}">
               <i class="nav-icon fas fa fa-folder-open"></i>
               <p>
                 Catalog
@@ -145,7 +151,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('publisher.index')}}" class="nav-link {{ request()->is('publishers') ? 'active' : ''}}">
+            <a href="{{ route('publisher.index')}}" class="nav-link {{ request()->is('publisher') ? 'active' : ''}}">
               <i class="nav-icon fas fa fa-bullhorn"></i>
               <p>
                 Publisher
@@ -153,7 +159,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('author.index')}}" class="nav-link {{ request()->is('authors') ? 'active' : ''}}">
+            <a href="{{ route('author.index')}}" class="nav-link {{ request()->is('author') ? 'active' : ''}}">
               <i class="nav-icon fas fa fa-certificate"></i>
               <p>
                 Author
@@ -161,7 +167,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('book.index')}}" class="nav-link {{ request()->is('books') ? 'active' : ''}}">
+            <a href="{{ route('book.index')}}" class="nav-link {{ request()->is('book') ? 'active' : ''}}">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Book
@@ -169,10 +175,18 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('member.index')}}" class="nav-link {{ request()->is('members') ? 'active' : ''}}">
+            <a href="{{ route('member.index')}}" class="nav-link {{ request()->is('member') ? 'active' : ''}}">
               <i class="nav-icon fas fa fa-users  "></i>
               <p>
                 Member
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('transaction.index')}}" class="nav-link {{ request()->is('transaction') ? 'active' : ''}}">
+              <i class="nav-icon fa fa-history  "></i>
+              <p>
+                Transaction
               </p>
             </a>
           </li>
