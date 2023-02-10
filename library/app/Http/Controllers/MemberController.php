@@ -13,20 +13,20 @@ class MemberController extends Controller
     }
     /**
      * Display a listing of the resource.
-     *
+     * http://127.0.0.1:8000/member?gender=L&_=1673270618078
+     * return view('admin.member.index', compact('members'));
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        
-       $members = Member::all();
-
-        return view('admin.member.index', compact('members'));
+        return view('admin.member.index');
     }
-
-    public function api() 
+    
+    public function api(Request $request) 
     {
-        $members = Member::all();
+        $members = Member::when($request->gender, function($q) use($request) {
+            return $q->where('gender', $request->gender);
+        })->get();
 
         $datatables = datatables()->of($members)->addIndexColumn();
         return $datatables->make(true);
@@ -61,7 +61,7 @@ class MemberController extends Controller
 
         Member::create($request->all());
 
-
+        
         return redirect()->route('member.index');
     }
 
@@ -124,3 +124,5 @@ class MemberController extends Controller
         return redirect()->route('member.index');
     }
 }
+
+

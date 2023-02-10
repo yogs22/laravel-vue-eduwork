@@ -62,7 +62,6 @@ class HomeController extends Controller
                     $data_month[] = Transaction::select(DB::raw("COUNT(*) as total"))->whereMonth('date_end', $month)->first()->total;
                 }
             }
-
             $data_bar [$key]['data'] = $data_month;
         }
 

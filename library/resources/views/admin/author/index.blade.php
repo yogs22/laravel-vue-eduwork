@@ -38,8 +38,8 @@
                                             <th  class="text-center">Email</th>
                                             <th  class="text-center">Phone Number</th>
                                             <th style="width: 250px" class="text-center">Address</th>
-                                            <th  class="text-center">Created_at</th>
-                                            <th  class="text-center">Update_at</th>
+                                            <th  style="width: 250px" class="text-center">Created_at</th>
+                                            <th  style="width: 250px" class="text-center">Update_at</th>
                                             <th style="width: 250px" class="text-center">Action</th>
                                         </tr>
                                     </thead>

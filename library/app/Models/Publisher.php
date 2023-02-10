@@ -33,7 +33,7 @@ class Publisher extends Model
     protected function phoneNumber(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => '+'.$value
+            get: fn ($value) => $value === 'L' ? 'Laki-laki' : 'Perempuan',
         );
     }
 }

@@ -10,9 +10,14 @@ class Member extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'gender', 'phone_number', 'address', 'email'];
-    public function user()
+    public function users()
     {
         return $this->hasOne('App\Models\User', 'member_id');
+    }
+
+    public function transaction()
+    {
+        return $this->hasMany('App\Models\Transaction', 'member_id');
     }
 
     protected function createdAt(): Attribute
@@ -26,6 +31,13 @@ class Member extends Model
     {
         return Attribute::make(
             get: fn ($value) => \Carbon\Carbon::parse($value)->format('H:i:s - d M Y'),
+        );
+    }
+
+    protected function gender(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => $value === 'L' ? 'Laki-laki' : 'Perempuan',
         );
     }
 }
