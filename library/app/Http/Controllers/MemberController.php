@@ -19,17 +19,22 @@ class MemberController extends Controller
      */
     public function index()
     {
-        return view('admin.member.index');
+        if (auth()->user()->can('index member')) {
+            return view('admin.member.index');
+        } else {
+            return abort('403');
+        }
     }
     
     public function api(Request $request) 
     {
-        $members = Member::when($request->gender, function($q) use($request) {
-            return $q->where('gender', $request->gender);
-        })->get();
+            $members = Member::when($request->gender, function($q) use($request) {
+                return $q->where('gender', $request->gender);
+            })->get();
 
-        $datatables = datatables()->of($members)->addIndexColumn();
-        return $datatables->make(true);
+            $datatables = datatables()->of($members)->addIndexColumn();
+            return $datatables->make(true);
+        
     }
 
     /**

@@ -19,7 +19,7 @@
                 </div>
             </div>
         </section>
-
+        @can('index member')
         <div id="controller">
             <section class="content">
                 <div class="container-fluid">
@@ -111,6 +111,7 @@
                 </div>
             </section>
         </div>
+        @endcan
     </div>
 @endsection
 

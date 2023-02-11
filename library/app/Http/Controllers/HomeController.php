@@ -12,6 +12,8 @@ use App\Models\TransactionDetail;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -72,5 +74,18 @@ class HomeController extends Controller
                             ->groupBy('authors.name')->pluck('authors.name');
 
         return view('home', compact('total_books', 'total_publishers', 'total_authors', 'total_transactions', 'data_donut', 'label_donut', 'data_bar', 'data_pie', 'label_pie'));
+    }
+
+    public function test_spatie() 
+    {
+        // $role = Role::create(['name' => 'admin']);
+        // $permission = Permission::create(['name' => 'index member']);
+
+        // $role->givePermissionTo($permission);
+        // $permission->assignRole($role);
+
+        $user = auth()->user();
+        $user->assignRole('admin');
+        return $user;
     }
 }
