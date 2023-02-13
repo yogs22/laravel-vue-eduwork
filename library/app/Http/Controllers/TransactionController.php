@@ -7,10 +7,12 @@ use App\Models\Book;
 use App\Models\Member;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-use function GuzzleHttp\Promise\all;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class TransactionController extends Controller
 {
@@ -25,7 +27,11 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        return view('admin.transaction.index');
+        if(auth()->user()->can('index transaksi')){
+            return view('admin.transaction.index');
+        }else{
+            abort('403');
+        }
     }
 
     /**
@@ -149,5 +155,22 @@ class TransactionController extends Controller
             ->addColumn('totalBook', fn($transaction) => $transaction->totalBook())
             ->addColumn('price', fn($transaction) => idrCurrency($transaction->totalPrice()))
             ->make(true);
+    }
+
+    public function test_spatie(){
+        // $role = Role::create(['name' => 'admin']);
+        // $permission = Permission::create(['name' => 'index transaksi']);
+
+        // $role->givePermissionTo($permission);
+        // $permission->assignRole($role);
+
+        // $user = auth()->user();
+        // $user->assignRole('admin');
+
+        // $user = User::with('roles')->get();
+        // return $user;
+        
+        $user = auth()->user();
+        $user->removeRole('admin');
     }
 }

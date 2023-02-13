@@ -6,6 +6,7 @@ use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PublisherController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\TransactionDetailController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -27,3 +28,5 @@ Route::get('api/publishers', [PublisherController::class, 'api']);
 Route::get('api/members', [MemberController::class, 'api']);
 Route::get('api/books', [BookController::class, 'api']);
 Route::get('api/transactions', [TransactionController::class, 'api']);
+
+Route::get('test_spatie', [TransactionController::class, 'test_spatie']);
