@@ -12,8 +12,18 @@
 <div id="controller">
   <div class="card">
     <div class="card-header">
-      <h3 class="card-title">Data Member</h3>
-      <a @click="addData()" class="btn btn-sm btn-primary float-right">Create New Member</a>
+      <div class="row">
+        <div class="col-md-10">
+          <a @click="addData()" class="btn btn-sm btn-primary">Create New Member</a>
+        </div>
+        <div class="col-md-2">
+          <select name="sex" class="form-control">
+            <option value="0">Semua Jenis Kelamin</option>
+            <option value="L">Laki-Laki</option>
+            <option value="P">Perempuan</option>
+          </select>
+        </div>
+      </div>
     </div>
     <div class="card-body">
       <table class="table" id="datatable">
@@ -117,6 +127,17 @@
     ];
   </script>
   <script type="text/javascript" src="{{ asset('crud.js') }}"></script>
+  <script type="text/javascript">
+    $('select[name=sex]').on('change', function() {
+      sex = $('select[name=sex]').val();
+
+      if(sex == 0){
+        controller.table.ajax.url(apiUrl).load();
+      }else{
+        controller.table.ajax.url(apiUrl+'?sex='+sex).load();
+      }
+    })
+  </script>
   {{-- <script>
     $(function () {
       $("#datatable").DataTable();

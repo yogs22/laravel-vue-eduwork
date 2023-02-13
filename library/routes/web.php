@@ -5,6 +5,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PublisherController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,8 +20,10 @@ Route::resource('publishers', PublisherController::class);
 Route::resource('authors', AuthorController::class);
 Route::resource('books', BookController::class);
 Route::resource('members', MemberController::class);
+Route::resource('transactions', TransactionController::class);
 
 Route::get('api/authors', [AuthorController::class, 'api']);
 Route::get('api/publishers', [PublisherController::class, 'api']);
 Route::get('api/members', [MemberController::class, 'api']);
 Route::get('api/books', [BookController::class, 'api']);
+Route::get('api/transactions', [TransactionController::class, 'api']);

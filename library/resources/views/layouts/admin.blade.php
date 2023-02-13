@@ -50,26 +50,18 @@
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
+          <span class="badge badge-warning navbar-badge">{{ notification()->count() }}</span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
+          <span class="dropdown-item dropdown-header">Lewat Batas Pengembalian</span>
           <div class="dropdown-divider"></div>
+          @foreach (notification() as $item)
           <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
+            <i class="fas fa-envelope mr-2"></i> {{ limitStringNotif($item->member->name) }}
+            <span class="float-right text-muted text-sm">{{ Carbon\Carbon::parse($item->date_end)->diffInDays() }} hari</span>
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
+          @endforeach
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
       </li>
@@ -150,9 +142,15 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('members') }}" class="nav-link {{ request()->is('member') ? 'active' : '' }}">
+            <a href="{{ url('members') }}" class="nav-link {{ request()->is('members') ? 'active' : '' }}">
               <i class="nav-icon fas fa-users"></i>
               <p>Member</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url('transactions') }}" class="nav-link {{ request()->is('transactions') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-users"></i>
+              <p>Peminjaman</p>
             </a>
           </li>
         </ul>

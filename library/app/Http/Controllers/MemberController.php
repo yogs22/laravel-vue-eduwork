@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class MemberController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -84,14 +88,14 @@ class MemberController extends Controller
         $member->delete();
     }
 
-    public function api(){
-        $members = Member::all();
+    public function api(Request $request){
+        $members = Member::when($request->sex, function($query) use($request) {
+            return $query->where('gender', $request->sex);
+        })->get();
 
         // foreach($members as $member){
         //     $member->date = dateFormat($member->created_at);
         // }
-
-
 
         $datatables = datatables()->of($members)->addColumn('date', function($member) {
             return dateFormat($member->created_at);

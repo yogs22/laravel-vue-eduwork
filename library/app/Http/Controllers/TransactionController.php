@@ -2,11 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TransactionValidation;
+use App\Models\Book;
+use App\Models\Member;
 use App\Models\Transaction;
+use App\Models\TransactionDetail;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+
+use function GuzzleHttp\Promise\all;
 
 class TransactionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +25,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.transaction.index');
     }
 
     /**
@@ -24,7 +35,9 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        $books   = Book::where('qty', '>', 0)->get();
+        $members = Member::orderBy('name', 'asc')->get();
+        return view('admin.transaction.create', compact('books', 'members'));
     }
 
     /**
@@ -35,7 +48,28 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $date = explode(" - ", $request->date);
+
+        Transaction::create([
+            'member_id'  => $request->member,
+            'date_start' => Carbon::parse($date[0])->format('Y-m-d'),
+            'date_end'   => Carbon::parse($date[1])->format('Y-m-d'),
+            'status'     => 0
+        ]);
+
+        $idTransaction = Transaction::select('id')->orderBy('id', 'desc')->first()->id;
+
+        foreach($request->books as $idBook){
+            TransactionDetail::create([
+                'transaction_id' => $idTransaction,
+                'book_id'        => $idBook,
+                'qty'            => 1
+            ]);
+
+            Book::whereId($idBook)->decrement('qty');
+        }
+
+        return redirect()->route('transactions.index');
     }
 
     /**
@@ -46,7 +80,8 @@ class TransactionController extends Controller
      */
     public function show(Transaction $transaction)
     {
-        //
+        // return $transaction->details()->firstOrCreate();
+        return view('admin.transaction.show', compact('transaction'));
     }
 
     /**
@@ -57,7 +92,7 @@ class TransactionController extends Controller
      */
     public function edit(Transaction $transaction)
     {
-        //
+        return view('admin.transaction.edit', compact('transaction'));
     }
 
     /**
@@ -69,7 +104,19 @@ class TransactionController extends Controller
      */
     public function update(Request $request, Transaction $transaction)
     {
-        //
+        if($transaction->status == 'Belum dikembalikan' && $request->status == '1'){
+            foreach($transaction->details as $detail){
+                Book::whereId($detail->book_id)->increment('qty', $detail->qty);
+            }
+        }else if ($transaction->status == 'Sudah dikembalikan' && $request->status == '0'){
+            foreach($transaction->details as $detail){
+                Book::whereId($detail->book_id)->decrement('qty', $detail->qty);
+            }
+        }
+
+        $transaction->update(['status' => $request->status]);
+
+        return redirect()->route('transactions.index');
     }
 
     /**
@@ -80,6 +127,27 @@ class TransactionController extends Controller
      */
     public function destroy(Transaction $transaction)
     {
-        //
+        foreach($transaction->details as $detail){
+            Book::whereId($detail->book_id)->increment('qty', $detail->qty);
+        }
+        
+        $transaction->delete();
+    }
+
+    public function api(Request $request){
+        $transactions = Transaction::when($request->status, function($query) use($request) {
+            return $query->where('status', $request->status);
+        })
+        ->when($request->date, function($query) use($request){
+            return $query->whereDate('date_start', $request->date);
+        })
+        ->get();
+
+        return datatables()->of($transactions)
+            ->addColumn('name', fn($transaction) => $transaction->member->name)
+            ->addColumn('time', fn($transaction) => $transaction->longBorrow())
+            ->addColumn('totalBook', fn($transaction) => $transaction->totalBook())
+            ->addColumn('price', fn($transaction) => idrCurrency($transaction->totalPrice()))
+            ->make(true);
     }
 }
